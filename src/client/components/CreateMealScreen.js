@@ -4,7 +4,7 @@ import '../css/CreateMealScreen.css';
 
 import { Form } from 'semantic-ui-react';
 
-import { sendData } from '../req/request.js';
+import { sendData, formDataToObject } from '../req/request.js';
 
 const CreateMealScreen = () => {
     const dietrestrictions = [
@@ -27,21 +27,12 @@ const CreateMealScreen = () => {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        const data = new FormData(evt.target);
+        const formData = new FormData(evt.target);
+        const outData = {...formDataToObject(formData), ...selectedDR};
 
-        for (const k in selectedDR) {
-            if (Array.isArray(selectedDR[k])) {
-                selectedDR[k].forEach(x => {
-                    data.append(k, x);
-                });
-            } else {
-                data.append(k, selectedDR[k]);
-            }
-        }
-        for (let [k, v] of data.entries()) {
-            console.log(k, v);
-        }
-        sendData(data);
+        
+        console.log(outData);
+        sendData(outData);
     };
 
     let selectedDR = {
@@ -86,6 +77,7 @@ const CreateMealScreen = () => {
                     label="Gender"
                     placeholder="Gender"
                     fluid
+                    search
                     selection
                     options={genderoptions}
                     onChange={(e, { value }) => onSelect(e, value, 'gen')}
