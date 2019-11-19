@@ -1,0 +1,9 @@
+.MainScreen a {
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+    color: rgb(65, 131, 196);
+}
+
+.MainScreen a:hover {
+    color: rgb(38, 87, 136);
+}

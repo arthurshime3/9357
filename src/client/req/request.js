@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-export const sendData = data => {
+export const sendData = (data, fn) => {
     axios
         .post('/api/create', data)
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res);
+            fn(res.data);
+        })
         .catch(err => console.log(err));
 };
 

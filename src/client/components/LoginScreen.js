@@ -3,7 +3,7 @@ import '../css/LoginScreen.css';
 
 const LoginScreen = () => {
     return (
-        <div className="LoginScreen">
+        <div className="LoginScreen MainContent">
             <h1>Log In</h1>
             <p>In Progress!</p>
         </div>

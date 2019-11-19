@@ -1,0 +1,35 @@
+.MealView {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.MealViewBox {
+    width: 220px;
+    margin: 5px;
+}
+
+.MealViewBox .MealTitle {
+    height: 3em;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.MealViewBox .MealTitle p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.MealViewBox img {
+    width: 220px;
+}
+
+.MealFacts p {
+    margin-bottom: 0.1em;
+}
+
+.MealDay p {
+    margin-bottom: 0.1em;
+    font-size: large;
+}
