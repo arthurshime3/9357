@@ -1,0 +1,25 @@
+.BackArrow {
+    margin-top: 3em;
+    padding: 4px;
+    width: 56px;
+    height: 56px;
+    border: none;
+    background-color: transparent;
+    border-radius: 28px;
+    transition-property: background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease;
+}
+
+.BackArrow img {
+    width: 30px;
+    height: 30px;
+}
+
+.BackArrow:hover {
+    background-color: rgb(218, 218, 218);
+}
+
+.BackArrow:focus {
+    outline: 0;
+}

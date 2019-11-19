@@ -9,6 +9,7 @@ import { sendData, formDataToObject } from '../req/request.js';
 import { navigate } from '@reach/router';
 
 import { useMealDataValue } from '../contexts/MealDataState';
+import BackArrow from './BackArrow';
 
 const dietrestrictions = [
     'Gluten-Free',
