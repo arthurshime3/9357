@@ -12,8 +12,13 @@
 .MealViewBox .MealTitle {
     height: 3em;
     display: flex;
-    align-items: flex-end;
     justify-content: center;
+    align-items: center;
+}
+
+.MealViewBox .WhichMeal {
+    font-size: larger;
+    margin-top: 1.5em;
 }
 
 .MealViewBox .MealTitle p {
@@ -31,5 +36,5 @@
 
 .MealDay p {
     margin-bottom: 0.1em;
-    font-size: large;
+    font-size: x-large;
 }

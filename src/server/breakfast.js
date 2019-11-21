@@ -43613,3 +43613,4 @@ const breakfast = [
         ]
     }
 ]
+module.exports = breakfast;

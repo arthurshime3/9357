@@ -56713,3 +56713,4 @@ const dinner = [
         ]
     }
 ]
+module.exports = dinner;

@@ -55026,3 +55026,4 @@ const lunch = [
         ]
     }
 ]
+module.exports = lunch;

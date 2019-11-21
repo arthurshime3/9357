@@ -5,7 +5,6 @@ import MealView from './MealView';
 
 import '../css/ViewMealScreen.css';
 
-
 function ViewMealScreen() {
     const mealContext = useContext(MealDataContext);
     const mealData = mealContext[0].data;
