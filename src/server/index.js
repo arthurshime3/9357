@@ -9,8 +9,18 @@ const dinner = require('./dinner');
 const math = require('mathjs');
 
 const getSelections = meals => {
-    const shuffled = meals.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 7);
+    let out = [];
+    for (let i = 0; i < 7; i++) {
+        out.push(meals[Math.floor(Math.random() * meals.length)]);
+    }
+    return out;
+};
+
+const applyFilters = (prefs, meals) => {
+    if (prefs.diet.includes('Vegetarian')) {
+        meals = meals.filter(meal => meal.vegetarian);
+    }
+    return meals;
 };
 
 app.use(express.static('dist'));
@@ -21,11 +31,12 @@ app.get('*', function(req, res) {
 });
 app.post('/api/create', (req, res) => {
     console.log(req.body);
+    const prefs = req.body;
     let meals = [];
     meals.push(
-        getSelections(breakfast),
-        getSelections(lunch),
-        getSelections(dinner),
+        getSelections(applyFilters(prefs, breakfast)),
+        getSelections(applyFilters(prefs, lunch)),
+        getSelections(applyFilters(prefs, dinner)),
     );
     meals = math.transpose(meals);
     res.send(meals);

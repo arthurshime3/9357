@@ -52,7 +52,7 @@ const CreateMealScreen = () => {
     };
 
     let selectedDR = {
-        diet: '',
+        diet: [],
         gen: '',
     };
 
