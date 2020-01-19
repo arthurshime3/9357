@@ -3,9 +3,14 @@ from flask_bcrypt import generate_password_hash, check_password_hash
 
 
 class User(me.Document):
+
+    meta = {
+        'indexes': ['email']
+    }
+
     first_name = me.StringField(required=True)
     last_name = me.StringField(required=True)
-    email = me.StringField(required=True, unique=True)
+    email = me.EmailField(required=True, unique=True)
     password = me.StringField(required=True)
 
     def hash_password(self):
