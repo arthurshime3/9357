@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Api
 from flask_mongoengine import MongoEngine
+from flask_bcrypt import Bcrypt
 
 
 app = Flask(__name__)
@@ -12,6 +13,7 @@ app.config['MONGODB_SETTINGS'] = {
 }
 
 db = MongoEngine(app)
+bcrypt = Bcrypt(app)
 
 
 if __name__ == '__main__':
