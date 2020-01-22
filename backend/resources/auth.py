@@ -18,7 +18,7 @@ class RegistrationApi(Resource):
             raise SchemaValidationError
         except NotUniqueError:
             raise EmailAlreadyExistsError
-        return {'id': str(user.id)}, 202
+        return {'id': str(user.id)}, 200
 
 
 class LoginApi(Resource):
