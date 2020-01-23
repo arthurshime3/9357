@@ -1,0 +1,63 @@
+.header {
+    display: flex;
+    height: 8vh;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: rgb(238, 28, 40); */
+    border-bottom: 1px solid rgb(226, 226, 226);
+    font-size: 1.2em;
+}
+
+.header .logobox {
+    color: rgb(0, 0, 0);
+}
+
+.header .logoimg {
+    margin-bottom: 0;
+    max-width: 100px;
+}
+
+.header .logobox {
+    font-weight: bold;
+}
+
+.header .link {
+    color: rgb(11, 129, 160);
+}
+
+.header .link:hover {
+    color: rgb(231, 24, 35);
+}
+
+.header .link div {
+    height: 3em;
+    /* background-color: rgb(255, 224, 234); */
+}
+
+.header .link p {
+    margin: 0px 10px;
+}
+/* 
+.header .buttonContainer {
+    background-color: rgb(231, 24, 35);
+}
+
+.header .buttonContainer:hover {
+    background-color: #c2141d;
+} */
+
+.header button:hover {
+    background-color: #c2141d;
+    outline: none;
+}
+
+.header button {
+    border: none;
+    background-color: rgb(231, 24, 35);
+    color: white;
+    height: 3em;
+    padding: 0px 15px;
+    font: inherit;
+    font-size: inherit;
+}
