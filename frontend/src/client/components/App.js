@@ -4,10 +4,11 @@ import '../css/App.css';
 
 import MainScreen from './MainScreen';
 import CreateMealScreen from './CreateMealScreen';
-// import InvalidNavScreen from './InvalidNavScreen';
+import InvalidNavScreen from './InvalidNavScreen';
 import MissionScreen from './MissionScreen';
 import LoginScreen from './LoginScreen';
 import ViewMealScreen from './ViewMealScreen';
+import RegisterScreen from './RegisterScreen';
 import Header from './Header';
 
 import {
@@ -35,8 +36,9 @@ function App() {
                         <CreateMealScreen path="create" />
                         <MissionScreen path="mission" />
                         <LoginScreen path="login" />
+                        <RegisterScreen path="register" />
                         <ViewMealScreen path="view" />
-                        {/* <InvalidNavScreen default /> */}
+                        <InvalidNavScreen default />
                     </Router>
 
                     <footer>Created by Junior Design #9357</footer>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
-import Header from './Header';
 import '../css/LoginScreen.css';
 
-import { navigate } from '@reach/router';
+import { navigate, Link } from '@reach/router';
 import { Form } from 'semantic-ui-react';
 import { login, getProfile, evtTargetToObject } from '../req/request.js';
 import { useSessionValue } from '../contexts/SessionState';
@@ -45,14 +44,14 @@ const LoginScreen = () => {
                         label="Username"
                         placeholder="Username"
                         name="email"
-                        onChange={u => setUserEmpty(u === '')}
+                        onChange={u => setUserEmpty(u.target.value === '')}
                     />
                     <Form.Input
                         label="Password"
                         type="password"
                         placeholder="Password"
                         name="password"
-                        onChange={p => setPassEmpty(p === '')}
+                        onChange={p => setPassEmpty(p.target.value === '')}
                     />
                     <Form.Button
                         type="submit"
@@ -60,6 +59,8 @@ const LoginScreen = () => {
                         Login
                     </Form.Button>
                 </Form>
+                <p>Not registered?</p>
+                <Link to="/register">Create an account here</Link>
             </div>
         </>
     );

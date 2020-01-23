@@ -11,6 +11,8 @@ const dinner = require('./dinner');
 
 const math = require('mathjs');
 
+const BACKEND_ROOT_URL = 'http://127.0.0.1:5000';
+
 const getSelections = meals => {
     let out = [];
     for (let i = 0; i < 7; i++) {
@@ -59,7 +61,20 @@ app.post('/api/login', (req, res) => {
     const data = req.body;
     console.log(data);
     axios
-        .post('http://127.0.0.1:5000/api/login', data)
+        .post(BACKEND_ROOT_URL + '/api/login', data)
+        .then(res2 => {
+            res.send(res2.data);
+        })
+        .catch(err => {
+            res.send(err.data);
+        });
+});
+
+app.post('/api/register', (req, res) => {
+    const data = req.body;
+    console.log(data);
+    axios
+        .post(BACKEND_ROOT_URL + '/api/register', data)
         .then(res2 => {
             res.send(res2.data);
         })

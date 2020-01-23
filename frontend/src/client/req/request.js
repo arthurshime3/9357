@@ -21,6 +21,17 @@ export const login = (data, fn) => {
         });
 };
 
+export const register = (data, fn) => {
+    axios
+        .post('/api/register', data)
+        .then(res => {
+            fn(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 export const getProfile = fn => {
     axios
         .get('/api/profile', { withCredentials: true })
