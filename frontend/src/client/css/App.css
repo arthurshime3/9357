@@ -9,9 +9,15 @@
 }
 
 .MainContent {
-    min-height: 97vh;
+    min-height: 87vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.valign {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }

@@ -10,6 +10,17 @@ export const sendData = (data, fn) => {
         .catch(err => console.log(err));
 };
 
+export const login = (data, fn) => {
+    axios
+        .post('/api/login', data)
+        .then(res => {
+            fn(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 export const formDataToObject = formData => {
     let object = {};
     formData.forEach((value, key) => {
@@ -23,4 +34,8 @@ export const formDataToObject = formData => {
         object[key].push(value);
     });
     return object;
+};
+
+export const evtTargetToObject = target => {
+    return { ...formDataToObject(new FormData(target)) };
 };

@@ -8,6 +8,7 @@ import CreateMealScreen from './CreateMealScreen';
 import MissionScreen from './MissionScreen';
 import LoginScreen from './LoginScreen';
 import ViewMealScreen from './ViewMealScreen';
+import Header from './Header';
 
 import {
     MealDataProvider,
@@ -19,6 +20,7 @@ function App() {
     return (
         <MealDataProvider initialState={initMealData} reducer={mealDataReducer}>
             <div className="App">
+                <Header />
                 <Router>
                     <MainScreen path="/" />
                     <CreateMealScreen path="create" />

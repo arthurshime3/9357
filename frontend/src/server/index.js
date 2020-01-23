@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 
 const app = express();
 
@@ -40,6 +41,19 @@ app.post('/api/create', (req, res) => {
     );
     meals = math.transpose(meals);
     res.send(meals);
+});
+
+app.post('/api/login', (req, res) => {
+    const data = req.body;
+    console.log(data);
+    axios
+        .post('http://127.0.0.1:5000/api/login', data)
+        .then(res2 => {
+            res.send(res2.data);
+        })
+        .catch(err => {
+            res.send(err.data);
+        });
 });
 
 app.listen(process.env.PORT || 8080, () =>
