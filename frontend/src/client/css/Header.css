@@ -24,6 +24,7 @@
 
 .header .link {
     color: rgb(11, 129, 160);
+    cursor: pointer;
 }
 
 .header .link:hover {

@@ -19,6 +19,9 @@ export const sessionReducer = (state, action) => {
                 ...state,
                 name: action.name,
             };
+        case 'logout':
+            console.log('attempting to erase session state');
+            return {};
         default:
             return state;
     }
