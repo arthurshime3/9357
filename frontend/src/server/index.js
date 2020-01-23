@@ -29,7 +29,7 @@ const applyFilters = (prefs, meals) => {
 app.use(express.static('dist'));
 app.use(express.json());
 
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
     res.sendfile('./dist/index.html');
 });
 
@@ -46,8 +46,12 @@ app.post('/api/create', (req, res) => {
     res.send(meals);
 });
 
-app.post('/api/validate', (req, res) => {
+app.get('/api/profile', (req, res) => {
     console.log(req.cookies);
+    const cookies = req.cookies;
+    if (cookies.token) {
+        res.send({ name: 'Testy McTesterson' });
+    }
     res.sendStatus(200);
 });
 

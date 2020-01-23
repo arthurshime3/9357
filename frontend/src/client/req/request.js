@@ -21,11 +21,11 @@ export const login = (data, fn) => {
         });
 };
 
-export const validate = fn => {
+export const getProfile = fn => {
     axios
-        .post('/api/validate', {}, { withCredentials: true })
+        .get('/api/profile', { withCredentials: true })
         .then(res => {
-            fn();
+            fn(res.data);
         })
         .catch(err => {
             console.log(err);

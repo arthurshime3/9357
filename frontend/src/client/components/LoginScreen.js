@@ -5,9 +5,12 @@ import '../css/LoginScreen.css';
 
 import { navigate } from '@reach/router';
 import { Form } from 'semantic-ui-react';
-import { login, validate, evtTargetToObject } from '../req/request.js';
+import { login, getProfile, evtTargetToObject } from '../req/request.js';
+import { useSessionValue } from '../contexts/SessionState';
 
 const LoginScreen = () => {
+    const [{ data }, dispatch] = useSessionValue();
+
     const handleSubmit = evt => {
         evt.preventDefault();
         const formData = evtTargetToObject(evt.target);
@@ -20,7 +23,11 @@ const LoginScreen = () => {
         if (res.hasOwnProperty('token')) {
             console.log(res.token);
             Cookies.set('token', res.token, { expires: 2 });
-            validate(() => navigate('/'));
+            getProfile(data => {
+                localStorage.setItem('name', data.name);
+                dispatch({ type: 'add name', name: data.name });
+                navigate('/');
+            });
         } else {
             console.log('fail');
         }

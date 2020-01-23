@@ -16,23 +16,33 @@ import {
     mealDataReducer,
 } from '../contexts/MealDataState';
 
+import {
+    SessionProvider,
+    initSession,
+    sessionReducer,
+} from '../contexts/SessionState';
+
 function App() {
     return (
-        <MealDataProvider initialState={initMealData} reducer={mealDataReducer}>
-            <div className="App">
-                <Header />
-                <Router>
-                    <MainScreen path="/" />
-                    <CreateMealScreen path="create" />
-                    <MissionScreen path="mission" />
-                    <LoginScreen path="login" />
-                    <ViewMealScreen path="view" />
-                    {/* <InvalidNavScreen default /> */}
-                </Router>
+        <SessionProvider initialState={initSession} reducer={sessionReducer}>
+            <MealDataProvider
+                initialState={initMealData}
+                reducer={mealDataReducer}>
+                <div className="App">
+                    <Header />
+                    <Router>
+                        <MainScreen path="/" />
+                        <CreateMealScreen path="create" />
+                        <MissionScreen path="mission" />
+                        <LoginScreen path="login" />
+                        <ViewMealScreen path="view" />
+                        {/* <InvalidNavScreen default /> */}
+                    </Router>
 
-                <footer>Created by Junior Design #9357</footer>
-            </div>
-        </MealDataProvider>
+                    <footer>Created by Junior Design #9357</footer>
+                </div>
+            </MealDataProvider>
+        </SessionProvider>
     );
 }
 
