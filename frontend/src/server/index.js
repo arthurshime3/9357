@@ -1,7 +1,9 @@
 const express = require('express');
 const axios = require('axios');
+const cookieParser = require('cookie-parser');
 
 const app = express();
+app.use(cookieParser());
 
 const breakfast = require('./breakfast');
 const lunch = require('./lunch');
@@ -30,6 +32,7 @@ app.use(express.json());
 app.get('*', function(req, res) {
     res.sendfile('./dist/index.html');
 });
+
 app.post('/api/create', (req, res) => {
     console.log(req.body);
     const prefs = req.body;
@@ -41,6 +44,11 @@ app.post('/api/create', (req, res) => {
     );
     meals = math.transpose(meals);
     res.send(meals);
+});
+
+app.post('/api/validate', (req, res) => {
+    console.log(req.cookies);
+    res.sendStatus(200);
 });
 
 app.post('/api/login', (req, res) => {

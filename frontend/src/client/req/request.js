@@ -21,6 +21,17 @@ export const login = (data, fn) => {
         });
 };
 
+export const validate = fn => {
+    axios
+        .post('/api/validate', {}, { withCredentials: true })
+        .then(res => {
+            fn();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 export const formDataToObject = formData => {
     let object = {};
     formData.forEach((value, key) => {

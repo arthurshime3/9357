@@ -3,8 +3,9 @@ import Cookies from 'js-cookie';
 import Header from './Header';
 import '../css/LoginScreen.css';
 
+import { navigate } from '@reach/router';
 import { Form } from 'semantic-ui-react';
-import { login, evtTargetToObject } from '../req/request.js';
+import { login, validate, evtTargetToObject } from '../req/request.js';
 
 const LoginScreen = () => {
     const handleSubmit = evt => {
@@ -19,6 +20,7 @@ const LoginScreen = () => {
         if (res.hasOwnProperty('token')) {
             console.log(res.token);
             Cookies.set('token', res.token, { expires: 2 });
+            validate(() => navigate('/'));
         } else {
             console.log('fail');
         }
