@@ -1,7 +1,16 @@
 .LoginScreen form {
-    margin-bottom: 2em;
+    /* margin-bottom: 2em; */
 }
 
 .LoginScreen p {
     margin: 0;
+}
+
+.LoginScreen .logininfo {
+    margin-top: 1em;
+}
+
+.LoginScreen .error {
+    margin-top: 1em;
+    color: #9f3a38;
 }

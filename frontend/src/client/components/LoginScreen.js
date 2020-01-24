@@ -29,11 +29,13 @@ const LoginScreen = () => {
             });
         } else {
             console.log('fail');
+            setWrongUserPass(true);
         }
     };
 
     const [userEmpty, setUserEmpty] = useState(true);
     const [passEmpty, setPassEmpty] = useState(true);
+    const [wrongUserPass, setWrongUserPass] = useState(false);
 
     return (
         <>
@@ -44,14 +46,22 @@ const LoginScreen = () => {
                         label="Username"
                         placeholder="Username"
                         name="email"
-                        onChange={u => setUserEmpty(u.target.value === '')}
+                        error={wrongUserPass}
+                        onChange={u => {
+                            setUserEmpty(u.target.value === '');
+                            setWrongUserPass(false);
+                        }}
                     />
                     <Form.Input
                         label="Password"
                         type="password"
                         placeholder="Password"
                         name="password"
-                        onChange={p => setPassEmpty(p.target.value === '')}
+                        error={wrongUserPass}
+                        onChange={p => {
+                            setPassEmpty(p.target.value === '');
+                            setWrongUserPass(false);
+                        }}
                     />
                     <Form.Button
                         type="submit"
@@ -59,8 +69,13 @@ const LoginScreen = () => {
                         Login
                     </Form.Button>
                 </Form>
-                <p>Not registered?</p>
-                <Link to="/register">Create an account here</Link>
+                <p className="error">
+                    {wrongUserPass ? 'Invalid username or password' : ''}
+                </p>
+                <div className="logininfo">
+                    <p>Not registered?</p>
+                    <Link to="/register">Create an account here</Link>
+                </div>
             </div>
         </>
     );
