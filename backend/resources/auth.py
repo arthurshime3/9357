@@ -1,9 +1,9 @@
 from flask import request
 from flask_restful import Resource
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from models.user import User
 from mongoengine.errors import DoesNotExist, FieldDoesNotExist, NotUniqueError
-from .errors import EmailAlreadyExistsError, UnauthorizedError, SchemaValidationError
+from .errors import EmailAlreadyExistsError, InternalServerError, UnauthorizedError, SchemaValidationError
 import datetime
 
 
@@ -33,3 +33,14 @@ class LoginApi(Resource):
             return {'token': access_token}, 200
         except DoesNotExist:
             raise UnauthorizedError
+
+    @jwt_required
+    def get(self):
+        try:
+            user_id = get_jwt_identity()
+            user = User.objects.get(id=user_id)
+            response = {"first_name": user.first_name,
+                        "last_name": user.last_name}
+            return response, 200
+        except Exception as e:
+            raise InternalServerError(e)
