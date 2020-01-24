@@ -43,8 +43,8 @@ const LoginScreen = () => {
                 <h1>Login</h1>
                 <Form onSubmit={handleSubmit}>
                     <Form.Input
-                        label="Username"
-                        placeholder="Username"
+                        label="Email"
+                        placeholder="Email"
                         name="email"
                         error={wrongUserPass}
                         onChange={u => {
