@@ -31,7 +31,9 @@ const Header = () => {
                 </div>
             </Link>
             <Link className="link valign" to="mission">
-                Our Mission
+            <div className="valign">
+                    <p>Our Mission</p>
+                </div>
             </Link>
             {/* <Link to="login" className="buttonContainer" onClick={() => login()}> */}
             {sessionData.name ? (
