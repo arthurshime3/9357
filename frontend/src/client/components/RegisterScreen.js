@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import '../css/RegisterScreen.css';
 
 import { navigate, Link } from '@reach/router';
-import { Form } from 'semantic-ui-react';
+import { Form, Label } from 'semantic-ui-react';
 import { evtTargetToObject, register } from '../req/request.js';
 import { useSessionValue } from '../contexts/SessionState';
 
@@ -28,11 +28,18 @@ const RegisterScreen = () => {
 
     const [fieldsEmpty, setFields] = useState([true, true, true, true]);
     const [loading, setLoading] = useState(false);
+    const [emailValid, setEmailValid] = useState(true);
 
     const modifyFieldsEmpty = (index, e) => {
         const newArr = fieldsEmpty.slice(0);
         newArr[index] = e.target.value === '';
         setFields(newArr);
+    };
+
+    const isValidEmail = s => {
+        return s.match(
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        );
     };
 
     return (
@@ -56,7 +63,11 @@ const RegisterScreen = () => {
                         label="Email"
                         placeholder="Email"
                         name="email"
-                        onChange={u => modifyFieldsEmpty(2, u)}
+                        error={!emailValid}
+                        onChange={u => {
+                            modifyFieldsEmpty(2, u);
+                            setEmailValid(isValidEmail(u.target.value));
+                        }}
                     />
                     <Form.Input
                         label="Password"
@@ -67,7 +78,7 @@ const RegisterScreen = () => {
                     />
                     <Form.Button
                         type="submit"
-                        disabled={fieldsEmpty.some(x => x)}
+                        disabled={fieldsEmpty.some(x => x) || !emailValid}
                         loading={loading}>
                         Register
                     </Form.Button>
