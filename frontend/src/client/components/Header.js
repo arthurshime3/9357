@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 
 import { SessionContext, useSessionValue } from '../contexts/SessionState';
 
@@ -15,6 +15,7 @@ const Header = () => {
     const logout = () => {
         localStorage.removeItem('name');
         dispatch({ type: 'logout' });
+        navigate('/');
     };
 
     return (
@@ -31,7 +32,7 @@ const Header = () => {
                 </div>
             </Link>
             <Link className="link valign" to="mission">
-            <div className="valign">
+                <div className="valign">
                     <p>Our Mission</p>
                 </div>
             </Link>

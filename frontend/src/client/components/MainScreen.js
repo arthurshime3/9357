@@ -13,6 +13,7 @@ const MainScreen = () => {
     return (
         <>
             <div className="MainScreen MainContent">
+                <h1>Home</h1>
                 {sessionData.name ? (
                     <p>Hey there {sessionData.name}!</p>
                 ) : (
