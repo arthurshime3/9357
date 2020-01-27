@@ -15,7 +15,10 @@ app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb://jd:password1@ds225205.mlab.com:25205/jdtest?retryWrites=false'
 }
 
+app.config['JWT_TOKEN_LOCATION'] = ['cookies']
+app.config['JWT_COOKIE_CSRF_PROTECT'] = False # shouldn't use this in production
 app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this!
+
 
 db = MongoEngine(app)
 bcrypt = Bcrypt(app)

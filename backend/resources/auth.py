@@ -1,6 +1,7 @@
-from flask import request
+from flask import jsonify, request, make_response
 from flask_restful import Resource
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, \
+    set_access_cookies, unset_jwt_cookies
 from models.user import User
 from mongoengine.errors import DoesNotExist, FieldDoesNotExist, NotUniqueError
 from .errors import EmailAlreadyExistsError, InternalServerError, UnauthorizedError, SchemaValidationError
@@ -30,7 +31,10 @@ class LoginApi(Resource):
                 raise UnauthorizedError
             expires = datetime.timedelta(days=1)
             access_token = create_access_token(identity=str(user.id), expires_delta=expires)
-            return {'token': access_token}, 200
+            resp = make_response()
+            resp.status_code = 200
+            set_access_cookies(resp, access_token)
+            return resp
         except DoesNotExist:
             raise UnauthorizedError
 
@@ -44,3 +48,12 @@ class LoginApi(Resource):
             return response, 200
         except Exception as e:
             raise InternalServerError(e)
+
+
+class LogoutApi(Resource):
+    @jwt_required
+    def post(self):
+        resp = make_response()
+        resp.status_code = 200
+        unset_jwt_cookies(resp)
+        return resp
