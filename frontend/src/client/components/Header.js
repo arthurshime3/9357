@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, navigate } from '@reach/router';
 
 import { SessionContext, useSessionValue } from '../contexts/SessionState';
+import { logout as reqlogout } from '../req/request';
 
 import '../css/Header.css';
 import GradyLogo from '../img/gradylogo.png';
@@ -13,9 +14,12 @@ const Header = () => {
     console.log(sessionData.name);
 
     const logout = () => {
-        localStorage.removeItem('name');
-        dispatch({ type: 'logout' });
-        navigate('/');
+        localStorage.removeItem('first_name');
+        localStorage.removeItem('last_name');
+        reqlogout(() => {
+            dispatch({ type: 'logout' });
+            navigate('/');
+        });
     };
 
     return (
@@ -37,7 +41,7 @@ const Header = () => {
                 </div>
             </Link>
             {/* <Link to="login" className="buttonContainer" onClick={() => login()}> */}
-            {sessionData.name ? (
+            {sessionData.first_name ? (
                 <a onClick={() => logout()}>
                     <div className="valign link">
                         <p>Logout</p>

@@ -14,8 +14,11 @@ const MainScreen = () => {
         <>
             <div className="MainScreen MainContent">
                 <h1>Home</h1>
-                {sessionData.name ? (
-                    <p>Hey there {sessionData.name}!</p>
+                {sessionData.first_name ? (
+                    <p>
+                        Hey there{' '}
+                        {sessionData.first_name + ' ' + sessionData.last_name}!
+                    </p>
                 ) : (
                     <p>Not logged in</p>
                 )}

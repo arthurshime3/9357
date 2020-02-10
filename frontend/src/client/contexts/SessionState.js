@@ -8,8 +8,11 @@ export const SessionProvider = ({ reducer, initialState, children }) => (
 );
 export const useSessionValue = () => useContext(SessionContext);
 
-export const initSession = localStorage.getItem('name')
-    ? { name: localStorage.getItem('name') }
+export const initSession = localStorage.getItem('first_name')
+    ? {
+          first_name: localStorage.getItem('first_name'),
+          last_name: localStorage.getItem('last_name'),
+      }
     : {};
 export const sessionReducer = (state, action) => {
     console.log(state, action);
@@ -17,7 +20,8 @@ export const sessionReducer = (state, action) => {
         case 'add name':
             return {
                 ...state,
-                name: action.name,
+                first_name: action.first_name,
+                last_name: action.last_name,
             };
         case 'logout':
             console.log('attempting to erase session state');

@@ -14,7 +14,20 @@ export const login = (data, fn) => {
     axios
         .post('/api/login', data)
         .then(res => {
-            fn(res.data);
+            console.log(res);
+            fn(res);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+export const logout = fn => {
+    axios
+        .post('/api/logout', { withCredentials: true })
+        .then(res => {
+            console.log(res);
+            fn(res);
         })
         .catch(err => {
             console.log(err);
@@ -34,9 +47,14 @@ export const register = (data, fn) => {
 
 export const getProfile = fn => {
     axios
-        .get('/api/profile', { withCredentials: true })
+        .get('/api/login', { withCredentials: true })
         .then(res => {
-            fn(res.data);
+            if (res.status == 200) {
+                console.log(res.data);
+                fn(res.data);
+            } else {
+                console.log(res);
+            }
         })
         .catch(err => {
             console.log(err);

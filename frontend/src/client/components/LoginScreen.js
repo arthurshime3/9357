@@ -19,12 +19,16 @@ const LoginScreen = () => {
 
     const onReceive = res => {
         console.log(res);
-        if (res.hasOwnProperty('token')) {
-            console.log(res.token);
-            Cookies.set('token', res.token, { expires: 2 });
+        if (res.status == 200) {
+            console.log('success!');
             getProfile(data => {
-                localStorage.setItem('name', data.name);
-                dispatch({ type: 'add name', name: data.name });
+                localStorage.setItem('first_name', data.first_name);
+                localStorage.setItem('last_name', data.last_name);
+                dispatch({
+                    type: 'add name',
+                    first_name: data.first_name,
+                    last_name: data.last_name,
+                });
                 navigate('/');
             });
         } else {

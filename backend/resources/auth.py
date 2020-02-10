@@ -52,7 +52,7 @@ class LoginApi(Resource):
 
 class LogoutApi(Resource):
     @jwt_required
-    def post(self):
+    def get(self):
         resp = make_response()
         resp.status_code = 200
         unset_jwt_cookies(resp)
