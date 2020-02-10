@@ -8,6 +8,7 @@ import sys
 sys.path.append('../')
 from models.meal import Ingredient, Meal, Measure, Nutrient
 
+
 def parse_meal(response_json):
 		title = None
 		image = None
@@ -15,15 +16,15 @@ def parse_meal(response_json):
 		sourceUrl = None
 		readyInMinutes = None
 		pricePerServing = None
-		cheap = bytes(False)
+		cheap = False
 		diets = None
-		dairyFree = bytes(False)
-		glutenFree = bytes(False)
-		ketogenic = bytes(False)
-		lowFodmap = bytes(False)
-		sustainable = bytes(False)
-		vegan = bytes(False)
-		vegetarian = bytes(False)
+		dairyFree = False
+		glutenFree = False
+		ketogenic = False
+		lowFodmap = False
+		sustainable = False
+		vegan = False
+		vegetarian = False
 		dishTypes = None
 		ings = None
 		nutr = None
@@ -41,23 +42,23 @@ def parse_meal(response_json):
 		if 'pricePerServing' in response_json:
 			pricePerServing = response_json['pricePerServing']
 		if 'cheap' in response_json:
-			cheap = bytes(response_json['cheap'])
+			cheap = response_json['cheap']
 		if 'diets' in response_json:
 			diets = response_json['diets']
 		if 'dairyFree' in response_json:
-			dairyFree = bytes(response_json['dairyFree'])
+			dairyFree = response_json['dairyFree']
 		if 'glutenFree' in response_json:
-			glutenFree = bytes(response_json['glutenFree'])
+			glutenFree = response_json['glutenFree']
 		if 'ketogenic' in response_json:
-			ketogenic = bytes(response_json['ketogenic'])
+			ketogenic = response_json['ketogenic']
 		if 'lowFodmap' in response_json:
-			lowFodmap = bytes(response_json['lowFodmap'])
+			lowFodmap = response_json['lowFodmap']
 		if 'sustainable' in response_json:
-			sustainable = bytes(response_json['sustainable'])
+			sustainable = response_json['sustainable']
 		if 'vegan' in response_json:
-			vegan = bytes(response_json['vegan'])
+			vegan = response_json['vegan']
 		if 'vegetarian' in response_json:
-			vegetarian = bytes(response_json['vegetarian'])
+			vegetarian = response_json['vegetarian']
 		if 'dishTypes' in response_json:
 			dishTypes = response_json['dishTypes']
 
@@ -101,6 +102,7 @@ def parse_meal(response_json):
 			nutrients=nutr)
 		return meal
 
+
 me.connect('jdtest', host='mongodb://jd:password1@ds225205.mlab.com:25205/jdtest?retryWrites=false')
 
 headers = {
@@ -115,8 +117,8 @@ for idx in tqdm(range(10, 20)):
 		if response.status_code == 200:
 			meal = parse_meal(response.json())
 			try:
-			    meal.save(force_insert=True)
+				meal.save(force_insert=True)
 			except NotUniqueError:
-			    print("error occurred")
+				print("error occurred")
 	except me.errors.ValidationError:
 		print("\nskip")
