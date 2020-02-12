@@ -10,14 +10,15 @@ export const sendData = (data, fn) => {
         .catch(err => console.log(err));
 };
 
-export const login = (data, fn) => {
+export const login = (data, succ, fail) => {
     axios
         .post('/api/login', data)
         .then(res => {
             console.log(res);
-            fn(res);
+            succ(res);
         })
         .catch(err => {
+            fail(err);
             console.log(err);
         });
 };

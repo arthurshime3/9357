@@ -14,7 +14,7 @@ const LoginScreen = () => {
         evt.preventDefault();
         const formData = evtTargetToObject(evt.target);
         console.log(formData);
-        login(formData, data => onReceive(data));
+        login(formData, data => onReceive(data), data => onFail(data));
     };
 
     const onReceive = res => {
@@ -36,6 +36,10 @@ const LoginScreen = () => {
             setWrongUserPass(true);
         }
     };
+    const onFail = res => {
+        console.log('fail');
+        setWrongUserPass(true);
+    }
 
     const [userEmpty, setUserEmpty] = useState(true);
     const [passEmpty, setPassEmpty] = useState(true);
