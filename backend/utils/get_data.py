@@ -110,15 +110,17 @@ headers = {
 	"x-rapidapi-key": "038a8a5cdemsh31ec49533d1ca9cp1dfbd7jsn1cf6b6966a3a"
 }
 
-for idx in tqdm(range(10, 20)):
+skippedRecipes = list()
+for idx in tqdm(range(400, 410)):
 	request_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{}/information?includeNutrition=true".format(idx)
 	try:
 		response = requests.get(request_string, headers=headers)
 		if response.status_code == 200:
 			meal = parse_meal(response.json())
 			try:
-				meal.save(force_insert=True)
+			    meal.save(force_insert=True)
 			except NotUniqueError:
-				print("error occurred")
+			    print("error occurred")
 	except me.errors.ValidationError:
-		print("\nskip")
+		skippedRecipes.append(idx)
+print("\nSkipped {}".format(skippedRecipes))
