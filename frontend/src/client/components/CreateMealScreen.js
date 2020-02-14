@@ -81,6 +81,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Weight"
                     type="number"
+                    min = {70}
                 />
                 <Form.Input
                     label="Height (in)"
@@ -88,6 +89,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Height"
                     type="number"
+                    min = {36}
                 />
                 <Form.Dropdown
                     label="Gender"
@@ -104,6 +106,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Budget"
                     type="number"
+                    min = {1}
                 />
                 <Form.Button type="submit">Create Meal Plan</Form.Button>
             </Form>
