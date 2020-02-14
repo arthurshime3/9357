@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const sendData = (data, fn) => {
     axios
-        .post('/api/create', data)
+        .post('/api/mealplans', data)
         .then(res => {
             console.log(res);
             fn(res.data);

@@ -4,12 +4,12 @@ from webargs import fields
 from webargs.flaskparser import use_args
 from services.meal_plan_generator import generate_meal_plan
 
-GENDERS = ['male', 'female', 'other']
+GENDERS = ['Male', 'Female', 'Other']
 
 
 class MealPlanApi(Resource):
 
-    @jwt_required
+    # @jwt_required
     @use_args({'wt': fields.Int(required=True, load_only='weight', validate=lambda val: val > 0),
                'ht': fields.Int(required=True, load_only='height', validate=lambda val: val > 0),
                'bud': fields.Float(required=True, load_only='budget', validate=lambda val: val > 0),

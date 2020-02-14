@@ -3,7 +3,7 @@ import { format, startOfToday, startOfWeek, addDays } from 'date-fns';
 import '../css/MealView.css';
 
 const processMealData = data => {
-    const nutrients = data.nutrition.nutrients;
+    const nutrients = data.nutrients;
     const transformedNutrients = {};
     nutrients.forEach(nutrient => {
         transformedNutrients[nutrient.title.toLowerCase()] = {
