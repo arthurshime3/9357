@@ -1,11 +1,9 @@
 import mongoengine as me
 
-
 class Measurement(me.EmbeddedDocument):
-    multiplier: me.BooleanField()
-    value: me.FloatField(min_value=0)
-    unit: me.StringField(choices=['g', 'mg', 'IU', 'μg'])
-
+    multiplier = me.BooleanField()
+    value = me.FloatField(min_value=0)
+    unit = me.StringField(choices=['g', 'mg', 'IU', 'μg', 'cal'])
 
 class DietaryRestriction(me.Document):
     name = me.StringField(required=True, primary_key=True)
