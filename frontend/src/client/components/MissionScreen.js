@@ -5,31 +5,23 @@ const MissionScreen = () => {
         <div className="MainContent">
             <h1>Our Mission</h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                mattis vitae lectus non placerat. Integer ut augue in nibh
-                rutrum blandit tempus rutrum orci. Morbi id ligula sed sem
-                pharetra dictum eget aliquam mauris. Morbi ut metus lacus.
-                Integer vitae sem in velit porta interdum. Duis ut ipsum
-                aliquet, sagittis odio ac, varius purus. Suspendisse auctor
-                rhoncus ex, eget fringilla ex bibendum et. Fusce ornare pulvinar
-                purus aliquet feugiat. Praesent eleifend nisi est, in consequat
-                tortor consequat eget. Etiam maximus, magna nec scelerisque
-                consequat, lectus est tincidunt elit, eget pretium nunc libero
-                vel nibh. Aenean porttitor rutrum ligula, id eleifend diam
-                mattis at. Duis elementum ligula ut magna luctus pharetra. Nunc
-                placerat massa quis lectus ullamcorper rhoncus. Pellentesque
-                mattis est libero, id semper nunc rhoncus nec. Donec sem odio,
-                porta id ultricies quis, aliquam id ante.
+            Maintaining a proper diet is difficult. For patients of Grady Memorial Hospital,
+            this difficulty is compounded with the need for medical care, and frequently with
+            a lack of socioeconomic resources. Some medical conditions can greatly affect the
+            dietary needs and restrictions of patients, making creating a satisfactory diet
+            even more challenging.
             </p>
             <p>
-                Curabitur sit amet scelerisque sapien, vitae ullamcorper lectus.
-                In a nisl eu neque iaculis scelerisque. Vivamus sollicitudin non
-                augue id luctus. Morbi turpis nisi, posuere ac iaculis ac,
-                posuere id ex. Morbi sed mattis augue. Etiam ac dui nec diam
-                semper fermentum. In lobortis posuere dolor id porttitor.
-                Pellentesque cursus pulvinar lacinia. Cras magna turpis, pretium
-                ac diam a, efficitur consectetur lectus. Curabitur porttitor
-                turpis nibh.
+            The Food as Medicine Initiative aims to meet the needs of low-income patients by
+            recommending affordable and accessible meals based on their dietary needs. We have
+            seen firsthand the impact of spending more time with loved ones, instead of needing
+            to return to a hospital because of complications. We hope to make this a much less
+            common occurrence. Meal kit products are frequently too expensive for many patients,
+            or do not take into account the variety of constraints placed on their diets. Our
+            project will cater to as many patients as possible, while being freely usable. Patients
+            will be able to understand how they can diversify their diet, and know what ingredients
+            they will need to prepare their meals. We hope you will join us as we make food the
+            best medicine!
             </p>
         </div>
     );
