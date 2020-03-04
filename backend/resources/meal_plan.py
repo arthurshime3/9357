@@ -3,6 +3,7 @@ from flask_jwt_extended import jwt_required
 from webargs import fields
 from webargs.flaskparser import use_args
 from services.meal_plan_generator import generate_meal_plan
+from models.dietary_restriction import DietaryRestriction
 
 GENDERS = ['Male', 'Female', 'Other']
 
@@ -16,5 +17,6 @@ class MealPlanApi(Resource):
                'diet': fields.DelimitedList(fields.Str(), required=True),
                'gen': fields.Str(required=True, validate=lambda val: val in GENDERS)})
     def post(self, args):
-        meal_plan = [generate_meal_plan() for i in range(7)]
+        diet = DietaryRestriction.objects.get(pk="Low FODMAP")
+        meal_plan = [generate_meal_plan(diet) for i in range(1)]
         return meal_plan, 200
