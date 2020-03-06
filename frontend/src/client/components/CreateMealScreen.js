@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import '../css/CreateMealScreen.css';
 
 import { Form } from 'semantic-ui-react';
 
-import { sendData, formDataToObject } from '../req/request.js';
+import {
+    sendData,
+    formDataToObject,
+    getDietaryRestrictions,
+} from '../req/request.js';
 
 import { navigate } from '@reach/router';
 
@@ -29,10 +33,18 @@ const makeOptions = r =>
         value: s,
     }));
 const dietoptions = makeOptions(dietrestrictions);
-const genderoptions = makeOptions(['Male', 'Female', 'Other']);
+const genderoptions = makeOptions(['Male', 'Female']);
 
 const CreateMealScreen = () => {
     const [{ data }, dispatch] = useMealDataValue();
+    const [dietrestrictions, setdietrestrictions] = useState([]);
+    const handleGetDietRestrictions = data => {
+        setdietrestrictions(makeOptions(data));
+    };
+
+    useEffect(() => {
+        getDietaryRestrictions(handleGetDietRestrictions);
+    }, []);
 
     const handleSubmit = evt => {
         evt.preventDefault();
@@ -52,7 +64,7 @@ const CreateMealScreen = () => {
     };
 
     let selectedDR = {
-        diet: [],
+        diet: '',
         gen: '',
     };
 
@@ -66,13 +78,12 @@ const CreateMealScreen = () => {
 
             <Form id="formarea" name="createMealForm" onSubmit={handleSubmit}>
                 <Form.Dropdown
-                    label="Dietary Restrictions"
-                    placeholder="Dietary Restrictions"
+                    label="Dietary Restriction"
+                    placeholder="Dietary Restriction"
                     fluid
-                    multiple
                     search
                     selection
-                    options={dietoptions}
+                    options={dietrestrictions}
                     onChange={(e, { value }) => onSelect(e, value, 'diet')}
                 />
                 <Form.Input
@@ -81,7 +92,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Weight"
                     type="number"
-                    min = {70}
+                    min={70}
                 />
                 <Form.Input
                     label="Height (in)"
@@ -89,7 +100,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Height"
                     type="number"
-                    min = {36}
+                    min={36}
                 />
                 <Form.Dropdown
                     label="Gender"
@@ -106,7 +117,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Budget"
                     type="number"
-                    min = {1}
+                    min={1}
                 />
                 <Form.Button type="submit">Create Meal Plan</Form.Button>
             </Form>

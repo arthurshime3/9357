@@ -62,6 +62,22 @@ export const getProfile = fn => {
         });
 };
 
+export const getDietaryRestrictions = fn => {
+    axios
+        .get('/api/dietaryRestrictions')
+        .then(res => {
+            if (res.status == 200) {
+                console.log(res.data);
+                fn(res.data);
+            } else {
+                console.log(res);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
 export const formDataToObject = formData => {
     let object = {};
     formData.forEach((value, key) => {
