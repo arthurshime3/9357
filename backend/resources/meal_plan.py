@@ -5,7 +5,7 @@ from webargs.flaskparser import use_args
 from services.meal_plan_generator import generate_meal_plan
 from models.dietary_restriction import DietaryRestriction
 
-GENDERS = ['Male', 'Female', 'Other']
+GENDERS = ['Male', 'Female']
 
 
 class MealPlanApi(Resource):
@@ -15,8 +15,10 @@ class MealPlanApi(Resource):
                'ht': fields.Int(required=True, load_only='height', validate=lambda val: val > 0),
                'bud': fields.Float(required=True, load_only='budget', validate=lambda val: val > 0),
                'diet': fields.DelimitedList(fields.Str(), required=True),
-               'gen': fields.Str(required=True, validate=lambda val: val in GENDERS)})
+               'gen': fields.Str(required=True, validate=lambda val: val in GENDERS),
+               'age': fields.Float(required=True, validate=lambda val: val > 0),
+               })
     def post(self, args):
-        diet = DietaryRestriction.objects.get(pk="Low FODMAP")
-        meal_plan = [generate_meal_plan(diet) for i in range(1)]
+        meal_plan = generate_meal_plan(7, args.get('wt'), args.get('ht'), args.get('bud'), args.get('diet')[0],
+                                       args.get('gen'), args.get('age'))
         return meal_plan, 200
