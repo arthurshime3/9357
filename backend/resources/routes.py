@@ -1,6 +1,7 @@
 from .auth import RegistrationApi, LoginApi, LogoutApi
 from .meal_plan import MealPlanApi
 from .dietary_restriction import DietaryRestrictionApi
+from .grocery import GroceryApi
 
 
 def initialize_routes(api):
@@ -9,3 +10,4 @@ def initialize_routes(api):
     api.add_resource(LogoutApi, '/api/logout')
     api.add_resource(MealPlanApi, '/api/mealplans')
     api.add_resource(DietaryRestrictionApi, '/api/dietaryRestrictions')
+    api.add_resource(GroceryApi, '/api/grocery')
