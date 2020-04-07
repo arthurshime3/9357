@@ -26,8 +26,8 @@ const dietrestrictions = [
     'Shellfish Allergy',
     'Nut Allergy',
 ];
-const makeOptions = r =>
-    r.map(s => ({
+const makeOptions = (r) =>
+    r.map((s) => ({
         key: s,
         text: s,
         value: s,
@@ -38,7 +38,7 @@ const genderoptions = makeOptions(['Male', 'Female']);
 const CreateMealScreen = () => {
     const [{ data }, dispatch] = useMealDataValue();
     const [dietrestrictions, setdietrestrictions] = useState([]);
-    const handleGetDietRestrictions = data => {
+    const handleGetDietRestrictions = (data) => {
         setdietrestrictions(makeOptions(data));
     };
 
@@ -46,16 +46,16 @@ const CreateMealScreen = () => {
         getDietaryRestrictions(handleGetDietRestrictions);
     }, []);
 
-    const handleSubmit = evt => {
+    const handleSubmit = (evt) => {
         evt.preventDefault();
         const formData = new FormData(evt.target);
         const outData = { ...formDataToObject(formData), ...selectedDR };
 
         console.log(outData);
-        sendData(outData, val => onSuccess(val));
+        sendData(outData, (val) => onSuccess(val));
     };
 
-    const onSuccess = data => {
+    const onSuccess = (data) => {
         dispatch({
             type: 'add meal data',
             newData: data,
@@ -110,6 +110,14 @@ const CreateMealScreen = () => {
                     selection
                     options={genderoptions}
                     onChange={(e, { value }) => onSelect(e, value, 'gen')}
+                />
+                <Form.Input
+                    label="Age"
+                    name="age"
+                    fluid
+                    placeholder="Age"
+                    type="number"
+                    min={1}
                 />
                 <Form.Input
                     label="Budget ($)"

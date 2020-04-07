@@ -2,15 +2,16 @@ import React from 'react';
 import { format, startOfToday, startOfWeek, addDays } from 'date-fns';
 import '../css/MealView.css';
 
-const processMealData = data => {
+const processMealData = (data) => {
     const nutrients = data.nutrients;
     const transformedNutrients = {};
-    nutrients.forEach(nutrient => {
+    // console.log(nutrients);
+    for (const [name, nutrient] of Object.entries(nutrients)) {
         transformedNutrients[nutrient.title.toLowerCase()] = {
             amount: nutrient.amount,
             unit: nutrient.unit,
         };
-    });
+    }
 
     return {
         title: data.title,
@@ -19,7 +20,7 @@ const processMealData = data => {
     };
 };
 
-const MealView = props => {
+const MealView = (props) => {
     const makeMealBoxData = (data, mealName) => {
         return (
             <>

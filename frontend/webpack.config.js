@@ -43,7 +43,7 @@ module.exports = {
     new CleanWebpackPlugin([outputDirectory]),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      favicon: './public/gradyicon.png'
+      // favicon: './public/gradyicon.png'
     })
   ],
 };

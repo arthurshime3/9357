@@ -7,6 +7,7 @@ import CreateMealScreen from './CreateMealScreen';
 import InvalidNavScreen from './InvalidNavScreen';
 import MissionScreen from './MissionScreen';
 import LoginScreen from './LoginScreen';
+import ViewGroceryScreen from './ViewGroceryScreen';
 import ViewMealScreen from './ViewMealScreen';
 import RegisterScreen from './RegisterScreen';
 import Header from './Header';
@@ -38,6 +39,7 @@ function App() {
                         <LoginScreen path="login" />
                         <RegisterScreen path="register" />
                         <ViewMealScreen path="view" />
+                        <ViewGroceryScreen path="grocery" />
                         <InvalidNavScreen default />
                     </Router>
 
