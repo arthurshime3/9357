@@ -5,7 +5,7 @@ GENDERS = ['Male', 'Female']
 
 class Restriction(me.EmbeddedDocument):
     name = me.StringField(required=True)
-    value = me.FloatField(min_value=0)
+    value = me.FloatField(min_value=0, required=True)
     unit = me.StringField(choices=UNITS, required=True)
     is_min = me.BooleanField(default=False)
     is_multiplier = me.BooleanField(default=False)

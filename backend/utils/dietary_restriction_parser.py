@@ -98,6 +98,20 @@ for ind in range(numRows):
     Restriction(name = "Sugar", value = None, unit = 'g'),
     Restriction(name = "Zinc", value = float(nutrientRows[ind][71]), unit = 'mg', is_min = True),
     Restriction(name = "Zinc", value = None, unit = 'mg')]
+
+    count = 0
+    while(count < len(restrictionList)):
+        if restrictionList[count].value == None:
+            del restrictionList[count]
+            count -= 1
+        count += 1
+
+    # for restriction in range(len(restrictionList)):
+    #     if restrictionList[restriction].value == None:
+    #         del restrictionList[restriction]
+    #         restriction -= 1
+    #     print(restriction)
+    #     print(len(restrictionList))
     
     params = nutrientRows[ind][0].split(',')
     maxAge = None if len(params[3]) == 0 else int(params[3])
