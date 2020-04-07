@@ -57,7 +57,7 @@ def generate_daily_meal_plan(weight, height, budget, dietary_restriction, gender
     prob += lpSum([meal_dict.get(i)["pricePerServing"] * meal_vars[i] for i in meal_ids]) <= budget
 
     for res in dietary_restriction['restrictions']:
-        constraint = lpSum([meal_dict[i]['nutrients'][res.name]['amount'] * meal_vars[i] for i in meal_ids])
+        constraint = lpSum([meal_dict[i]['nutrients'][res.name]['amount'] * meal_vars[i] for i in meal_ids if res.name in meal_dict[i]['nutrients']])
         val = res.value
         if res.is_multiplier:
             val = val * rbw
