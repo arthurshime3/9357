@@ -6,9 +6,6 @@ import sys
 sys.path.append('../')
 from models.dietary_restriction import DietaryRestriction, Restriction
 
-# Message Marisa about how to deal with 45% min kcal units (based on calories calculation??) (units on kcal/min calories/ g/kg BW/day)
-# Multiply kcal by RBW (same as for calories)
-
 nutrients = "GT Nutrients.csv"
 
 nutrientRows = []
@@ -28,6 +25,7 @@ for ind in range(numRows):
     maxPhos = None if len(nutrientRows[ind][62]) == 0 else float(nutrientRows[ind][62])
     maxPot = None if len(nutrientRows[ind][64]) == 0 else float(nutrientRows[ind][64])
 
+    # Multiply kcal by RBW (same as for calories)
     restrictionList = [Restriction(name = "Calories", value = float(nutrientRows[ind][1]), unit = 'g/kg', is_min = True, is_multiplier = True),
     Restriction(name = "Calories", value = float(nutrientRows[ind][2]), unit = 'g/kg', is_multiplier = True),
     Restriction(name = "Protein", value = float(nutrientRows[ind][3]), unit = 'g', is_min = True, is_multiplier = True),
