@@ -4,121 +4,115 @@ from mongoengine.errors import DoesNotExist, FieldDoesNotExist, NotUniqueError
 
 import sys
 sys.path.append('../')
-from models.dietary_restriction import DietaryRestriction, Measurement
+from models.dietary_restriction import DietaryRestriction, Restriction
 
-nutrients = "macro_micro_nutrients.csv"
-ingredients = "excluded_ingredients.csv"
+# Message Marisa about how to deal with 45% min kcal units (based on calories calculation??) (units on kcal/min calories/ g/kg BW/day)
+# Multiply kcal by RBW (same as for calories)
 
-nutrientFields = [] 
+nutrients = "GT Nutrients.csv"
+
 nutrientRows = []
-ingredientFields = []
-ingredientRows = []
 numRows = 0
 
 with open(nutrients, 'r') as csvfile:
-    csvreader = csv.reader(csvfile) 
-      
-    nutrientFields = next(csvreader)
+    csvreader = csv.reader(csvfile)
+    temp = next(csvreader)
   
-    for row in csvreader: 
-        nutrientRows.append(row)
-
+    for row in csvreader: nutrientRows.append(row)
     numRows = len(nutrientRows)
 
-with open(ingredients, 'r') as csvfile: 
-    csvreader = csv.reader(csvfile) 
-      
-    ingredientFields = next(csvreader)
-  
-    for row in csvreader: 
-        ingredientRows.append(row)
-
-restrictions = []
+dietaryRestrictions = []
 
 for ind in range(numRows):
-    restriction = DietaryRestriction(name = nutrientRows[ind][0],
-    excluded_ingredients = ingredientRows[ind][1].split(','),  # ERROR IN FORMATTING HERE??
-    min_carbs = Measurement(multiplier = False, value = int(nutrientRows[ind][1]), unit = 'g'),
-    max_carbs = Measurement(multiplier = False, value = int(nutrientRows[ind][2]), unit = 'g'),
-    min_protein = Measurement(multiplier = False, value = int(nutrientRows[ind][3]), unit = 'g'),
-    max_protein = Measurement(multiplier = False, value = int(nutrientRows[ind][4]), unit = 'g'),
-    min_calories = Measurement(multiplier = False, value = int(nutrientRows[ind][5]), unit = 'cal'),
-    max_calories = Measurement(multiplier = False, value = int(nutrientRows[ind][6]), unit = 'cal'),
-    min_fat = Measurement(multiplier = False, value = int(nutrientRows[ind][7]), unit = 'g'),
-    max_fat = Measurement(multiplier = False, value = int(nutrientRows[ind][8]), unit = 'g'),
-    min_alcohol = Measurement(multiplier = False, value = int(nutrientRows[ind][9]), unit = 'g'),
-    max_alcohol = Measurement(multiplier = False, value = int(nutrientRows[ind][10]), unit = 'g'),
-    min_caffeine = Measurement(multiplier = False, value = int(nutrientRows[ind][11]), unit = 'mg'),
-    max_caffeine = Measurement(multiplier = False, value = int(nutrientRows[ind][12]), unit = 'mg'),
-    min_copper = Measurement(multiplier = False, value = int(nutrientRows[ind][13]), unit = 'mg'),
-    max_copper = Measurement(multiplier = False, value = int(nutrientRows[ind][14]), unit = 'mg'),
-    min_calcium = Measurement(multiplier = False, value = int(nutrientRows[ind][15]), unit = 'g'),
-    max_calcium = Measurement(multiplier = False, value = int(nutrientRows[ind][16]), unit = 'g'),
-    min_chlorine = Measurement(multiplier = False, value = int(nutrientRows[ind][17]), unit = 'mg'),
-    max_chlorine = Measurement(multiplier = False, value = int(nutrientRows[ind][18]), unit = 'mg'),
-    min_cholesterol = Measurement(multiplier = False, value = int(nutrientRows[ind][19]), unit = 'mg'),
-    max_cholesterol = Measurement(multiplier = False, value = int(nutrientRows[ind][20]), unit = 'mg'),
-    min_fluoride = Measurement(multiplier = False, value = int(nutrientRows[ind][21]), unit = 'mg'),
-    max_fluoride = Measurement(multiplier = False, value = int(nutrientRows[ind][22]), unit = 'mg'),
-    min_saturated_fat = Measurement(multiplier = False, value = int(nutrientRows[ind][23]), unit = 'g'),
-    max_saturated_fat = Measurement(multiplier = False, value = int(nutrientRows[ind][24]), unit = 'g'),
-    min_vitamin_a = Measurement(multiplier = False, value = int(nutrientRows[ind][25]), unit = 'IU'),
-    max_vitamin_a = Measurement(multiplier = False, value = int(nutrientRows[ind][26]), unit = 'IU'),
-    min_vitamin_c = Measurement(multiplier = False, value = int(nutrientRows[ind][27]), unit = 'mg'),
-    max_vitamin_c = Measurement(multiplier = False, value = int(nutrientRows[ind][28]), unit = 'mg'),
-    min_vitamin_d = Measurement(multiplier = False, value = int(nutrientRows[ind][29]), unit = 'μg'),
-    max_vitamin_d = Measurement(multiplier = False, value = int(nutrientRows[ind][30]), unit = 'μg'),
-    min_vitamin_e = Measurement(multiplier = False, value = int(nutrientRows[ind][31]), unit = 'mg'),
-    max_vitamin_e = Measurement(multiplier = False, value = int(nutrientRows[ind][32]), unit = 'mg'),
-    min_vitamin_k = Measurement(multiplier = False, value = int(nutrientRows[ind][33]), unit = 'μg'),
-    max_vitamin_k = Measurement(multiplier = False, value = int(nutrientRows[ind][34]), unit = 'μg'),
-    min_vitamin_b1 = Measurement(multiplier = False, value = int(nutrientRows[ind][35]), unit = 'mg'),
-    max_vitamin_b1 = Measurement(multiplier = False, value = int(nutrientRows[ind][36]), unit = 'mg'),
-    min_vitamin_b2 = Measurement(multiplier = False, value = int(nutrientRows[ind][37]), unit = 'mg'),
-    max_vitamin_b2 = Measurement(multiplier = False, value = int(nutrientRows[ind][38]), unit = 'mg'),
-    min_vitamin_b5 = Measurement(multiplier = False, value = int(nutrientRows[ind][39]), unit = 'mg'),
-    max_vitamin_b5 = Measurement(multiplier = False, value = int(nutrientRows[ind][40]), unit = 'mg'),
-    min_vitamin_b3 = Measurement(multiplier = False, value = int(nutrientRows[ind][41]), unit = 'mg'),
-    max_vitamin_b3 = Measurement(multiplier = False, value = int(nutrientRows[ind][42]), unit = 'mg'),
-    min_vitamin_b6 = Measurement(multiplier = False, value = int(nutrientRows[ind][43]), unit = 'mg'),
-    max_vitamin_b6 = Measurement(multiplier = False, value = int(nutrientRows[ind][44]), unit = 'mg'),
-    min_vitamin_b12 = Measurement(multiplier = False, value = int(nutrientRows[ind][45]), unit = 'μg'),
-    max_vitamin_b12 = Measurement(multiplier = False, value = int(nutrientRows[ind][46]), unit = 'μg'),
-    min_fiber = Measurement(multiplier = False, value = int(nutrientRows[ind][47]), unit = 'g'),
-    max_fiber = Measurement(multiplier = False, value = int(nutrientRows[ind][48]), unit = 'g'),
-    min_folate = Measurement(multiplier = False, value = int(nutrientRows[ind][49]), unit = 'g'),
-    max_folate = Measurement(multiplier = False, value = int(nutrientRows[ind][50]), unit = 'g'),
-    min_folic_acid = Measurement(multiplier = False, value = int(nutrientRows[ind][51]), unit = 'g'),
-    max_folic_acid = Measurement(multiplier = False, value = int(nutrientRows[ind][52]), unit = 'g'),
-    min_iodine = Measurement(multiplier = False, value = int(nutrientRows[ind][53]), unit = 'g'),
-    max_iodine = Measurement(multiplier = False, value = int(nutrientRows[ind][54]), unit = 'g'),
-    min_iron = Measurement(multiplier = False, value = int(nutrientRows[ind][55]), unit = 'mg'),
-    max_iron = Measurement(multiplier = False, value = int(nutrientRows[ind][56]), unit = 'mg'),
-    min_magnesium = Measurement(multiplier = False, value = int(nutrientRows[ind][57]), unit = 'mg'),
-    max_magnesium = Measurement(multiplier = False, value = int(nutrientRows[ind][58]), unit = 'mg'),
-    min_manganese = Measurement(multiplier = False, value = int(nutrientRows[ind][59]), unit = 'mg'),
-    max_manganese = Measurement(multiplier = False, value = int(nutrientRows[ind][60]), unit = 'mg'),
-    min_phosphorus = Measurement(multiplier = False, value = int(nutrientRows[ind][61]), unit = 'mg'),
-    max_phosphorus = Measurement(multiplier = False, value = int(nutrientRows[ind][62]), unit = 'mg'),
-    min_potassium = Measurement(multiplier = False, value = int(nutrientRows[ind][63]), unit = 'mg'),
-    max_potassium = Measurement(multiplier = False, value = int(nutrientRows[ind][64]), unit = 'mg'),
-    min_selenium = Measurement(multiplier = False, value = int(nutrientRows[ind][65]), unit = 'g'),
-    max_selenium = Measurement(multiplier = False, value = int(nutrientRows[ind][66]), unit = 'g'),
-    min_sodium = Measurement(multiplier = False, value = int(nutrientRows[ind][67]), unit = 'mg'),
-    max_sodium = Measurement(multiplier = False, value = int(nutrientRows[ind][68]), unit = 'mg'),
-    min_sugar = Measurement(multiplier = False, value = int(nutrientRows[ind][69]), unit = 'g'),
-    max_sugar = Measurement(multiplier = False, value = int(nutrientRows[ind][70]), unit = 'g'),
-    min_zinc = Measurement(multiplier = False, value = int(nutrientRows[ind][71]), unit = 'mg'),
-    max_zinc = Measurement(multiplier = False, value = int(nutrientRows[ind][72]), unit = 'mg'))
+    maxChol = None if len(nutrientRows[ind][20]) == 0 else float(nutrientRows[ind][20])
+    maxPhos = None if len(nutrientRows[ind][62]) == 0 else float(nutrientRows[ind][62])
+    maxPot = None if len(nutrientRows[ind][64]) == 0 else float(nutrientRows[ind][64])
 
-    restrictions.append(restriction)
+    restrictionList = [Restriction(name = "Calories", value = float(nutrientRows[ind][1]), unit = 'g/kg', is_min = True, is_multiplier = True),
+    Restriction(name = "Calories", value = float(nutrientRows[ind][2]), unit = 'g/kg', is_multiplier = True),
+    Restriction(name = "Protein", value = float(nutrientRows[ind][3]), unit = 'g', is_min = True, is_multiplier = True),
+    Restriction(name = "Protein", value = float(nutrientRows[ind][4]), unit = 'g', is_multiplier = True),
+    Restriction(name = "Carbohydrates", value = float(nutrientRows[ind][5]) * float(nutrientRows[ind][1]), unit = 'g', is_min = True, is_multiplier = True),
+    Restriction(name = "Carbohydrates", value = float(nutrientRows[ind][6]) * float(nutrientRows[ind][2]), unit = 'g', is_multiplier = True),
+    Restriction(name = "Fat", value = float(nutrientRows[ind][7]) * float(nutrientRows[ind][1]), unit = 'g', is_min = True, is_multiplier = True),
+    Restriction(name = "Fat", value = float(nutrientRows[ind][8]) * float(nutrientRows[ind][2]), unit = 'g', is_multiplier = True),
+    Restriction(name = "Alcohol", value = None, unit = 'g', is_min = True),
+    Restriction(name = "Alcohol", value = float(nutrientRows[ind][10]), unit = 'g'),
+    Restriction(name = "Caffeine", value = None, unit = 'mg', is_min = True),
+    Restriction(name = "Caffeine", value = None, unit = 'mg'),
+    Restriction(name = "Copper", value = float(nutrientRows[ind][13]), unit = 'mg', is_min = True),
+    Restriction(name = "Copper", value = None, unit = 'mg'),
+    Restriction(name = "Calcium", value = float(nutrientRows[ind][15]), unit = 'g', is_min = True),
+    Restriction(name = "Calcium", value = None, unit = 'g'),
+    Restriction(name = "Chloride", value = float(nutrientRows[ind][17]), unit = 'mg', is_min = True),
+    Restriction(name = "Chloride", value = None, unit = 'mg'),
+    Restriction(name = "Cholesterol", value = None, unit = 'mg', is_min = True),
+    Restriction(name = "Cholesterol", value = maxChol, unit = 'mg'),
+    Restriction(name = "Fluoride", value = float(nutrientRows[ind][21]), unit = 'mg', is_min = True),
+    Restriction(name = "Fluoride", value = None, unit = 'mg'),
+    Restriction(name = "Saturated Fat", value = None, unit = 'g', is_min = True, is_multiplier = True),
+    Restriction(name = "Saturated Fat", value = float(nutrientRows[ind][24]) * float(nutrientRows[ind][2]), unit = 'g', is_multiplier = True),
+    Restriction(name = "Vitamin A", value = None, unit = 'IU', is_min = True),
+    Restriction(name = "Vitamin A", value = None, unit = 'IU'),
+    Restriction(name = "Vitamin C", value = float(nutrientRows[ind][27]), unit = 'mg', is_min = True),
+    Restriction(name = "Vitamin C", value = None, unit = 'mg'),
+    Restriction(name = "Vitamin D", value = float(nutrientRows[ind][29]), unit = 'mmg', is_min = True),
+    Restriction(name = "Vitamin D", value = None, unit = 'mmg'),
+    Restriction(name = "Vitamin E", value = float(nutrientRows[ind][31]), unit = 'mg', is_min = True),
+    Restriction(name = "Vitamin E", value = None, unit = 'mg'),
+    Restriction(name = "Vitamin K", value = float(nutrientRows[ind][33]), unit = 'mmg', is_min = True),
+    Restriction(name = "Vitamin K", value = None, unit = 'mmg'),
+    Restriction(name = "Vitamin B1", value = float(nutrientRows[ind][35]), unit = 'mg', is_min = True),
+    Restriction(name = "Vitamin B1", value = None, unit = 'mg'),
+    Restriction(name = "Vitamin B2", value = float(nutrientRows[ind][37]), unit = 'mg', is_min = True),
+    Restriction(name = "Vitamin B2", value = None, unit = 'mg'),
+    Restriction(name = "Vitamin B5", value = float(nutrientRows[ind][39]), unit = 'mg', is_min = True),
+    Restriction(name = "Vitamin B5", value = None, unit = 'mg'),
+    Restriction(name = "Vitamin B3", value = float(nutrientRows[ind][41]), unit = 'mg', is_min = True),
+    Restriction(name = "Vitamin B3", value = None, unit = 'mg'),
+    Restriction(name = "Vitamin B6", value = float(nutrientRows[ind][43]), unit = 'mg', is_min = True),
+    Restriction(name = "Vitamin B6", value = None, unit = 'mg'),
+    Restriction(name = "Vitamin B12", value = float(nutrientRows[ind][45]), unit = 'mmg', is_min = True),
+    Restriction(name = "Vitamin B12", value = None, unit = 'mmg'),
+    Restriction(name = "Fiber", value = float(nutrientRows[ind][47]), unit = 'g', is_min = True),
+    Restriction(name = "Fiber", value = None, unit = 'g'),
+    Restriction(name = "Folate", value = float(nutrientRows[ind][49]), unit = 'g', is_min = True),
+    Restriction(name = "Folate", value = None, unit = 'g'),
+    Restriction(name = "Folic Acid", value = None, unit = 'g', is_min = True),
+    Restriction(name = "Folic Acid", value = None, unit = 'g'),
+    Restriction(name = "Iodine", value = float(nutrientRows[ind][53]), unit = 'g', is_min = True),
+    Restriction(name = "Iodine", value = None, unit = 'g'),
+    Restriction(name = "Iron", value = float(nutrientRows[ind][55]), unit = 'mg', is_min = True),
+    Restriction(name = "Iron", value = None, unit = 'mg'),
+    Restriction(name = "Magnesium", value = float(nutrientRows[ind][57]), unit = 'mg', is_min = True),
+    Restriction(name = "Magnesium", value = None, unit = 'mg'),
+    Restriction(name = "Manganese", value = float(nutrientRows[ind][59]), unit = 'mg', is_min = True),
+    Restriction(name = "Manganese", value = None, unit = 'mg'),
+    Restriction(name = "Phosphorus", value = float(nutrientRows[ind][61]), unit = 'mg', is_min = True),
+    Restriction(name = "Phosphorus", value = maxPhos, unit = 'mg'),
+    Restriction(name = "Potassium", value = float(nutrientRows[ind][63]), unit = 'mg', is_min = True),
+    Restriction(name = "Potassium", value = maxPot, unit = 'mg'),
+    Restriction(name = "Selenium", value = float(nutrientRows[ind][65]), unit = 'g', is_min = True),
+    Restriction(name = "Selenium", value = None, unit = 'g'),
+    Restriction(name = "Sodium", value = float(nutrientRows[ind][67]), unit = 'mg', is_min = True),
+    Restriction(name = "Sodium", value = float(nutrientRows[ind][68]), unit = 'mg'),
+    Restriction(name = "Sugar", value = None, unit = 'g', is_min = True),
+    Restriction(name = "Sugar", value = None, unit = 'g'),
+    Restriction(name = "Zinc", value = float(nutrientRows[ind][71]), unit = 'mg', is_min = True),
+    Restriction(name = "Zinc", value = None, unit = 'mg')]
+    
+    params = nutrientRows[ind][0].split(',')
+    maxAge = None if len(params[3]) == 0 else int(params[3])
+    dietaryRestriction = DietaryRestriction(name = params[0], gender = params[1], min_age = int(params[2]), max_age = maxAge, restrictions = restrictionList)
+
+    dietaryRestrictions.append(dietaryRestriction)
 
 me.connect('jdtest', host='mongodb://jd:password1@ds225205.mlab.com:25205/jdtest?retryWrites=false')
 
-for restriction in restrictions:
+for dietaryRestriction in dietaryRestrictions:
     try:
     	try:
-		    restriction.save(force_insert=True)
+		    dietaryRestriction.save(force_insert=True)
     	except NotUniqueError:
     		print("error occurred")
     except me.errors.ValidationError:
