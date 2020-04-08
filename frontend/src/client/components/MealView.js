@@ -41,6 +41,21 @@ const MealView = (props) => {
                 </div>
 
                 <img src={data.image} />
+                <div className="MealFacts">
+                    <p>{data.calories.amount.toFixed(0)} cal</p>
+                    {/* <p>
+                        Carbs: {data.carbohydrates.amount}
+                        {data.carbohydrates.unit}
+                    </p>
+                    <p>
+                        Protein: {data.protein.amount}
+                        {data.protein.unit}
+                    </p>
+                    <p>
+                        Fat: {data.fat.amount}
+                        {data.fat.unit}
+                    </p> */}
+                </div>
             </div>
         );
     };

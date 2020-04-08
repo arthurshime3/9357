@@ -93,22 +93,7 @@ const MealView = (props) => {
 
             <h2>{meal.title}</h2>
             <img src={meal.image} id="meal_img" />
-
-            {/* <div className="MealFacts">
-                <p>{meal.calories.amount} calories</p>
-                <p>
-                    Carbs: {meal.carbohydrates.amount}
-                    {meal.carbohydrates.unit}
-                </p>
-                <p>
-                    Protein: {meal.protein.amount}
-                    {meal.protein.unit}
-                </p>
-                <p>
-                    Fat: {meal.fat.amount}
-                    {meal.fat.unit}
-                </p>
-            </div> */}
+            
             <h3>Ingredients</h3>
             <IngredientsView meal={meal} />
             <h3>Recipe</h3>

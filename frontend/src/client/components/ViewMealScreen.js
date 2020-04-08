@@ -7,7 +7,7 @@ import MealOne from '../testdata/MealOne';
 import '../css/ViewMealScreen.css';
 
 const ViewMealScreen = (props) => {
-    const opts = props.location.state.opts;
+    const opts = props?.location?.state?.opts;
     const mealContext = useContext(MealDataContext);
     let mealData = mealContext[0].data;
     if (mealData == null || Object.entries(mealData).length === 0) {
