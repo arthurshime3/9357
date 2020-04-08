@@ -32,10 +32,10 @@ const makeOptions = (r) =>
         text: s,
         value: s,
     }));
-const dietoptions = makeOptions(dietrestrictions);
+
 const genderoptions = makeOptions(['Male', 'Female']);
 
-const CreateMealScreen = () => {
+const CreateMealScreen = (props) => {
     const [{ data }, dispatch] = useMealDataValue();
     const [dietrestrictions, setdietrestrictions] = useState([]);
     const handleGetDietRestrictions = (data) => {
@@ -52,25 +52,31 @@ const CreateMealScreen = () => {
         const outData = { ...formDataToObject(formData), ...selectedDR };
 
         console.log(outData);
+        const onSuccess = (data) => {
+            dispatch({
+                type: 'add meal data',
+                newData: data,
+            });
+
+            navigate(`/view`, { state: { opts: outData } });
+        };
         sendData(outData, (val) => onSuccess(val));
     };
 
-    const onSuccess = (data) => {
-        dispatch({
-            type: 'add meal data',
-            newData: data,
-        });
-        navigate(`/view`);
-    };
-
     let selectedDR = {
-        diet: '',
-        gen: '',
+        diet: props?.location?.state?.opts?.diet,
+        gen: props?.location?.state?.opts?.gen,
     };
 
     const onSelect = (e, value, fieldName) => {
         selectedDR[fieldName] = value;
     };
+
+    console.log(
+        `we have the following saved: ${JSON.stringify(
+            props?.location?.state?.opts,
+        )}`,
+    );
 
     return (
         <div className="CreateMealScreen MainContent">
@@ -85,6 +91,7 @@ const CreateMealScreen = () => {
                     selection
                     options={dietrestrictions}
                     onChange={(e, { value }) => onSelect(e, value, 'diet')}
+                    defaultValue={props?.location?.state?.opts?.diet}
                 />
                 <Form.Input
                     label="Weight (lbs)"
@@ -92,6 +99,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Weight"
                     type="number"
+                    value={props?.location?.state?.opts?.wt}
                     min={70}
                 />
                 <Form.Input
@@ -100,6 +108,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Height"
                     type="number"
+                    value={props?.location?.state?.opts?.ht}
                     min={36}
                 />
                 <Form.Dropdown
@@ -110,6 +119,7 @@ const CreateMealScreen = () => {
                     selection
                     options={genderoptions}
                     onChange={(e, { value }) => onSelect(e, value, 'gen')}
+                    defaultValue={props?.location?.state?.opts?.gen}
                 />
                 <Form.Input
                     label="Age"
@@ -117,6 +127,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Age"
                     type="number"
+                    value={props?.location?.state?.opts?.age}
                     min={1}
                 />
                 <Form.Input
@@ -125,6 +136,7 @@ const CreateMealScreen = () => {
                     fluid
                     placeholder="Budget"
                     type="number"
+                    value={props?.location?.state?.opts?.bud}
                     min={1}
                 />
                 <Form.Button type="submit">Create Meal Plan</Form.Button>

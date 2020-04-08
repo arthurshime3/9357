@@ -11,7 +11,7 @@ const processGroceryData = (data) => {
         });
     }
 
-    return out;
+    return out.sort((a, b) => (a.name <= b.name ? -1 : 1));
 };
 
 const GroceryView = (props) => {
@@ -21,7 +21,7 @@ const GroceryView = (props) => {
                 <ul>
                     {ingredients.map((i) => {
                         return (
-                            <li>
+                            <li key={i.name}>
                                 {i.name} {i.amount} {i.unit}
                             </li>
                         );

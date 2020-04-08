@@ -6,7 +6,8 @@ import MealOne from '../testdata/MealOne';
 
 import '../css/ViewMealScreen.css';
 
-function ViewMealScreen() {
+const ViewMealScreen = (props) => {
+    const opts = props.location.state.opts;
     const mealContext = useContext(MealDataContext);
     let mealData = mealContext[0].data;
     if (mealData == null || Object.entries(mealData).length === 0) {
@@ -32,11 +33,14 @@ function ViewMealScreen() {
         <div className="ViewMealScreen MainContent">
             <h1>Your Weekly Meal Plan</h1>
             <Link to="/grocery">View Grocery List</Link>
+            <Link to="/create" state={{ opts: opts }}>
+                Change Inputs
+            </Link>
             {/* <p>Data received was:</p> */}
             {/* <p>{JSON.stringify(mealData)}</p> */}
             <MealView data={mealData}></MealView>
         </div>
     );
-}
+};
 
 export default ViewMealScreen;
