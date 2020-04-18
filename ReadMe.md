@@ -116,7 +116,6 @@ Once Step 2 is completing and running the following should appear in your defaul
 
 You and any user can then interact with the application. 
 
-
-
+![Screen Shot 2020-04-18 at 7 02 42 PM](https://user-images.githubusercontent.com/46109868/79673414-82129980-81a7-11ea-8479-36583323bf01.png)
 
   
