@@ -1,6 +1,8 @@
 # Food As Medicine Initiative Meal Planning Application
 Team 9357 - Miguel de los Reyes, Arthur Shim, Kunal Patel, Akshay Karthik, Greg Varghese
 
+In collaboration with Grady Memorial Hospital in Atlanta, Georgia
+
 ## Overview
 Welcome to the Installation Guide for the Food As Medicine Initiative Meal Planning Application, which was created by a 
 collaboration between Grady Memorial Hospital and Georgia Tech Computer Science Spring 2020 Senior Design Team 9357. This guide will show the software's release information and installation procedures. 
@@ -40,6 +42,43 @@ Version 1.0.1
 
 ## Install Guide
 Follow the instructions below to install and run the Food As Medicine Initiative Meal Planner Web Application
+
+### Pre-Requisites
+Before installation, the following must be on your computer:
+* One of the following Operating Systems on computer:
+ * Windows 9 or newer
+ * MacOS 10 or newer
+* Stable internet connection through WiFi or Ethernet
+
+### Third Party Software Requirements
+* A web browser should be installed. 
+ * Although the application can run on most web browsers, Google Chrome or Mozilla FireFox are highly recommended
+
+### Download Instructions
+Follow the following steps to have a successful installation. 
+
+If probems occur, contact Customer Support at gregvarghese@gatech.edu
+
+#### Step 1: Download Instructions
+* Click the following link:
+  *  https://github.com/arthurshime3/9357
+ 
+* Clone the following Github repo
+  * Click the green button on the top right called "Clone or download"
+  * Copy the following link by either clicking the clipboard icon or highlighting with cursor and copying (MAC: cmd + C) (WINDOWS: ctrl + C)
+ 
+  * Alternative: copy and paste quoted link --> "https://github.com/arthurshime3/9357"
+ 
+* Open a new Terminal on computer 
+  * MAC: Command + SPACE, type "Terminal", press RETURN
+  * WINDOWS: Windows Key + F, type "Terminal", then press ENTER
+
+#### Step 2: Application Build
+
+* In terminal input the following:
+```
+cd https://github.com/arthurshime3/9357
+```
 
 
 
