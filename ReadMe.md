@@ -112,7 +112,7 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
 
 #### Step 3: Application built and Run in Default brower
 
-Once Step 2 is completing and running the following should appear in your default browser like the picture below. 
+Once Step 2 is completing and running the following should appear in your default browser like the image below. 
 
 You and any user can then interact with the application. 
 
