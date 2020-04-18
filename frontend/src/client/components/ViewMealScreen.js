@@ -39,19 +39,16 @@ const ViewMealScreen = (props) => {
             <Link to="/create" state={{ opts: opts }}>
                 Change Inputs
             </Link>
-            {/* <PDFDownloadLink
+            <PDFDownloadLink
                 document={<MealPlanPDF data={mealData} />}
                 fileName="mealplan.pdf">
                 {({ blob, url, loading, error }) =>
                     loading ? 'Loading document...' : 'Download Pdf'
                 }
-            </PDFDownloadLink> */}
+            </PDFDownloadLink>
             {/* <p>Data received was:</p> */}
             {/* <p>{JSON.stringify(mealData)}</p> */}
             <MealView data={mealData}></MealView>
-            <PDFViewer style={{ width: '200%', height: '70em' }}>
-                <MealPlanPDF data={mealData} />
-            </PDFViewer>
         </div>
     );
 };

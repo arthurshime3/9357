@@ -29,6 +29,15 @@ Font.register({
     ],
 });
 
+Font.register({
+    family: 'Zilla Slab',
+    fonts: [
+        {
+            src: '../../public/Zilla Slab.ttf',
+        },
+    ],
+});
+
 Font.registerHyphenationCallback((word) => ['', word]);
 
 const TD = (props) => <BaseTD style={{ border: 'none' }} {...props}></BaseTD>;
