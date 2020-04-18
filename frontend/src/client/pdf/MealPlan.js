@@ -80,6 +80,18 @@ export const MealPlanPDF = ({ data, opts }) => {
             {data.map((day, i) => (
                 <Page style={styles.page}>
                     <Day data={day} index={i + 1} key={i} />
+                    <Text
+                        render={({ pageNumber, totalPages }) =>
+                            `${pageNumber} / ${totalPages}`
+                        }
+                        style={{
+                            fontSize: '10',
+                            position: 'absolute',
+                            bottom: '1in',
+                            right: '1in',
+                        }}
+                        fixed
+                    />
                 </Page>
             ))}
         </Document>

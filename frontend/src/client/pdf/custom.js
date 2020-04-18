@@ -14,5 +14,5 @@ margin: auto; marginTop: 5; fontSize 10;
 `;
 
 export const LI = styled.Text`
-display: list-item; margin-left: 1em;
+display: list-item;
 `;

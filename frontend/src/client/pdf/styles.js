@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     h3: { fontSize: '16', fontWeight: 'bold' },
     th: { fontSize: '10', fontWeight: 'bold' },
     td: { fontSize: '10' },
-    mealimg: { width: '30vw' },
+    mealimg: { width: '35vw' },
     disclaimer: { fontSize: '10' },
 });
 
