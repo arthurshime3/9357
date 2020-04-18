@@ -75,10 +75,47 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
 
 #### Step 2: Application Build
 
-* In terminal input the following:
+1. In terminal input the following:
 ```
-cd https://github.com/arthurshime3/9357
+git clone https://github.com/arthurshime3/9357
 ```
+2. Now we need to cd into the 9357 terminal. This can be found by entering `ls` to see your current directory and `cd FILE-NAME` to enter into that folder/directory. 
+
+3. The directory is named `9357`. Once located, then enter into that directory by inputting `cd 9357'
+
+4. Once in the 9357 directory/folder, input the following:
+```
+cd frontend
+```
+5. Press ENTER, then enter the following in the next line:
+```
+npm install
+
+```
+6. Once the `npm install` completes its download, enter the following in the next line:
+```
+npm run dev
+```
+At this point, you default web browser will pop up. The web application will appear when completing steps 7 through 10.
+
+7. Press ENTER, then open a new terminal window.
+
+8. Repeat steps 2 and 3
+
+9. Once in the 9357 directory/folder, input the following:
+```
+cd backend
+```
+10. Repeat steps 5 and 6
+
+11. Web application should be up and running on their default web browser for user to interact with 
+
+#### Step 3: Application built and Run in Default brower
+
+Once Step 2 is completing and running the following should appear in your default browser like the picture below. 
+
+You and any user can then interact with the application. 
+
 
 
 
