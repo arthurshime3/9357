@@ -50,9 +50,11 @@ Before installation, the following must be on your computer:
  * MacOS 10 or newer
 * Stable internet connection through WiFi or Ethernet
 
+
 ### Third Party Software Requirements
 * A web browser should be installed. 
  * Although the application can run on most web browsers, Google Chrome or Mozilla FireFox are highly recommended
+
 
 ### Download Instructions
 Follow the following steps to have a successful installation. 
