@@ -65,11 +65,7 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
 * Click the following link:
   *  https://github.com/arthurshime3/9357
  
-* Clone the above Github repo
-  * Click the green button on the top right called "Clone or download"
-  * Copy the following link by either clicking the clipboard icon or highlighting with cursor and copying (MAC: cmd + C) (WINDOWS: ctrl + C)
- 
-  * Alternative: copy and paste quoted link --> "https://github.com/arthurshime3/9357"
+* Clone the above Github repo by clicking the green "Clone or download" button
  
 * Open a new Terminal on computer 
   * MAC: Command + SPACE, type "Terminal", press RETURN
