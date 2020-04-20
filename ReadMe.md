@@ -22,15 +22,15 @@ Version 1.0.1
   * Perfected an algorithm to create a curated meal plan based on user inputs
   * Created PDF export documents for meal plans and grocery list
     * Added checkboxes for user after each ingredient in grocery list
-    * Exporting PDFs are now implemented and working
+    * Exporting PDFs is now implemented and working
   
 * Bug Fixes
-  * Fixed PDF exports for meal ingredient list for the week
-    * Updated formatting layouts of PDF documents
-    * Fixed exporting issues 
+  * Fixed PDF export for meal ingredient list for the week
+    * Updated formatting layout
+    * Fixed exporting bugs 
   * Fixed PDF export for weekly meal plans
-    * Updated layout
-    * Fixed exporting issues
+    * Updated formatting layout
+    * Fixed exporting bugs
   * Updated layout and picture placement of weekly meal planning page
   
 * Known Bugs and Defects
@@ -77,7 +77,10 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
    ```
    git clone https://github.com/arthurshime3/9357
    ```
-   2. Next, cd into the 9357 terminal. This can be found by entering `ls` to see your current directory and `cd FILE-NAME` to enter into that directory. 
+   Alternatively, the files can be saved in a preferred location by simply downloading the repository as a .zip file,
+   without the need to use git commands.
+   
+   2. Next, cd into the 9357 directory. This can be found by entering `ls` to see your current directory and `cd FILE-NAME` to enter into that directory. 
 
    3. The directory is named `9357`. Once located, then enter into that directory by inputting `cd 9357`
 
