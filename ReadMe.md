@@ -52,6 +52,7 @@ Before installation, the following must be on your computer:
 * pip
 * Node.js
 * npm
+
 Database Requirements:
 * MongoDB
   * Either a locally installed instance or a hosted instance
@@ -114,15 +115,20 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
    ```
    cd backend
    ```
+
    10. Enter the following to download external dependencies:
    ```
    pip install -r "requirements.txt"
    ```
-   11. Then nter the following in the next line:
+
+   11. Open the file `app.py` and add the name of the db and the mongo uri. Additonal information can be found at ['Flask-MongoEngine Setup'](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/#configuration)
+   
+   12. Then enter the following in the next line:
    ```
    python app.py
    ```
-   12.  Web application should be up and running on default web browser
+
+   13. Web application should be up and running on default web browser
 
 #### Step 3: Application built and Run in Default browser
 
