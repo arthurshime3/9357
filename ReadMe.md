@@ -122,4 +122,10 @@ You and any user can then interact with the application.
 
 The process for installing and running this application is fairly simple, so we do not anticipate errors to arise. However, here are some common problems that may occur.
 
-#### Step 1: Download Instructions
+#### Unable to download repository
+
+If you do not have git installed on your machine, try downloading the repository as a .zip file instead of cloning it. Unzipping it into a directory will allow you to go into the proper subdirectories and run the commands that cause the app to run in your browser.
+
+#### Unable to download repository
+
+If you do not have git installed on your machine, try downloading the repository as a .zip file instead of cloning it. Unzipping it into a directory will allow you to go into the proper subdirectories and run the commands that cause the app to run in your browser.
