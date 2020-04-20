@@ -96,7 +96,7 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
    npm run dev
    ```
    
-   At this point, you default web browser will pop up. The web application will appear when completing steps 7 through 10.
+   At this point, your default web browser will pop up. The web application will appear when completing steps 7 through 10.
 
    7. Press ENTER, then open a new terminal window.
 
