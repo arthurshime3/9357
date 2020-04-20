@@ -78,7 +78,7 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
    Alternatively, the files can be saved in a preferred location by simply downloading the repository as a .zip file,
    without the need to use git commands.
    
-   2. Next, cd into the 9357 directory. This can be found by entering `ls` to see your current directory and `cd FILE-NAME` to enter into that directory. 
+   2. Next, cd into the 9357 directory. A directory is also known as a folder. This can be found by entering `ls` to see your current directory and `cd FILE-NAME` to enter into that directory. 
 
    3. The directory is named `9357`. Once located, then enter into that directory by inputting `cd 9357`
 
