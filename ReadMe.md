@@ -5,22 +5,22 @@ In collaboration with Grady Memorial Hospital in Atlanta, Georgia
 
 ## Overview
 Welcome to the Installation Guide for the Food As Medicine Initiative Meal Planning Application, which was created by a 
-collaboration between Grady Memorial Hospital and Georgia Tech Computer Science Spring 2020 Senior Design Team 9357. This guide will show the software's release information and installation procedures. 
+collaboration between Grady Memorial Hospital and Georgia Tech Computer Science Spring 2020 Junior Design Team 9357. This guide will show the software's release information and installation procedure. 
 
 ## Release Update - April 20, 2020
 Version 1.0.1
 
 ### New Features
 * New Software Releases
-  * User can interact with the intuitive User Interface
+  * User can interact with the intuitive user interface
   * User can register a new account using email address
     * User can log in with their email address
     * User can log out of the system
   * User can input person physiological data to create person, unique meal plans
     * User's data is stored in a secure database 
     * Database created with MongoDB
-    * Spoonacular APIs are able to provide the system with meal data
-  * Perfected an algorithms to create a curated meal plan based on user inputs
+    * Spoonacular API has provided the system with meal data
+  * Perfected an algorithm to create a curated meal plan based on user inputs
   * Created PDF export documents for meal plans and grocery list
     * Added checkboxes for user after each ingredient in grocery list
     * Exporting PDFs are now implemented and working
@@ -35,13 +35,14 @@ Version 1.0.1
   * Updated layout and picture placement of weekly meal planning page
   
 * Known Bugs and Defects
-  * Low Prioritity Functionality (Reach Goals)
+  * Low Priority Functionality (Reach Goals)
     * User's location and available food sources not implemented
     * Data of user's cultural background not incorporatied into meal generator algorithm
     * Application is not configurable for research studies
+    * Application does not allow users to save meal plans as templates for future modification
 
 ## Install Guide
-Follow the instructions below to install and run the Food As Medicine Initiative Meal Planner Web Application
+Follow the instructions below to install and run the Food As Medicine Initiative Meal Planner
 
 ### Pre-Requisites
 Before installation, the following must be on your computer:
@@ -52,8 +53,8 @@ Before installation, the following must be on your computer:
 
 
 ### Third Party Software Requirements
-* A web browser should be installed. 
- * Although the application can run on most web browsers, Google Chrome or Mozilla FireFox are highly recommended
+* A web browser should be installed.
+ * Although the application can run on most web browsers, Google Chrome or Mozilla FireFox are recommended
 
 
 ### Download Instructions
@@ -65,7 +66,7 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
 * Click the following link:
   *  https://github.com/arthurshime3/9357
  
-* Clone the following Github repo
+* Clone the above Github repo
   * Click the green button on the top right called "Clone or download"
   * Copy the following link by either clicking the clipboard icon or highlighting with cursor and copying (MAC: cmd + C) (WINDOWS: ctrl + C)
  
@@ -77,11 +78,11 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
 
 #### Step 2: Application Build
 
-   1. In terminal input the following:
+   1. In terminal input the following in your desired location for saving this application's files:
    ```
    git clone https://github.com/arthurshime3/9357
    ```
-   2. Now we need to cd into the 9357 terminal. This can be found by entering `ls` to see your current directory and `cd FILE-NAME` to enter into that folder/directory. 
+   2. Next, cd into the 9357 terminal. This can be found by entering `ls` to see your current directory and `cd FILE-NAME` to enter into that directory. 
 
    3. The directory is named `9357`. Once located, then enter into that directory by inputting `cd 9357`
 
@@ -115,10 +116,8 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
 
 #### Step 3: Application built and Run in Default brower
 
-Once Step 2 is completing and running the following should appear in your default browser like the image below. 
+Once Step 2 is complete and running, you should see something like the image below in your browser. 
 
-You and any user can then interact with the application. 
+You and any user can then interact with the application.
 
 ![Screen Shot 2020-04-18 at 7 02 42 PM](https://user-images.githubusercontent.com/46109868/79673414-82129980-81a7-11ea-8479-36583323bf01.png)
-
-  
