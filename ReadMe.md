@@ -45,9 +45,7 @@ Follow the instructions below to install and run the Food As Medicine Initiative
 
 ### Pre-Requisites
 Before installation, the following must be on your computer:
-* One of the following Operating Systems on computer:
- * Windows 9 or newer
- * MacOS 10 or newer
+* One of the following Operating Systems on computer: Windows 9 or newer or MacOS 10 or newer
 * Stable internet connection through WiFi or Ethernet
 
 
