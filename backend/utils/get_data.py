@@ -8,8 +8,7 @@ import sys
 sys.path.append('../')
 from models.meal import Ingredient, Meal, Measure, Nutrient
 
-
-def parse_meal(response_json):
+def parse_meal(response_json, recipe_json):
 		title = None
 		image = None
 		servings = None
@@ -28,6 +27,7 @@ def parse_meal(response_json):
 		dishTypes = None
 		ings = None
 		nutr = None
+		recipe = None
 
 		if 'title' in response_json:
 			title = response_json['title']
@@ -80,11 +80,16 @@ def parse_meal(response_json):
 		# ing = Ingredient(id=1, name='butter', amount=1.0, measures=[m1])
 		# nutr = Nutrient(title='Protein', amount=1.0, unit='g')
 
+		rec = []
+		if len(recipe_json) != 0:
+			for step in recipe_json[0]['steps']:
+				rec.append(step['step'])
+
 		meal = Meal(
 			id=int(response_json['id']), 
 			title=title, 
 			image=image, 
-			servings=servings, 
+			servings=servings,
 			sourceURL=sourceUrl,
 			readyInMinutes=readyInMinutes,
 			pricePerServing=pricePerServing,
@@ -99,9 +104,9 @@ def parse_meal(response_json):
 			vegetarian=vegetarian,
 			dishTypes=dishTypes,
 			ingredients=ings, 
-			nutrients=nutr)
+			nutrients=nutr,
+			recipe=rec)
 		return meal
-
 
 me.connect('jdtest', host='mongodb://jd:password1@ds225205.mlab.com:25205/jdtest?retryWrites=false')
 
@@ -111,16 +116,18 @@ headers = {
 }
 
 skippedRecipes = list()
-for idx in tqdm(range(400, 410)):
+for idx in tqdm(range(18000, 20000)):
 	request_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{}/information?includeNutrition=true".format(idx)
+	recipe_request_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{}/analyzedInstructions".format(idx)
 	try:
 		response = requests.get(request_string, headers=headers)
+		recipe = requests.get(recipe_request_string, headers=headers)
 		if response.status_code == 200:
-			meal = parse_meal(response.json())
+			meal = parse_meal(response.json(), recipe.json())
 			try:
-			    meal.save(force_insert=True)
+			    meal.save(force_insert=False)
 			except NotUniqueError:
 			    print("error occurred")
 	except me.errors.ValidationError:
 		skippedRecipes.append(idx)
-print("\nSkipped {}".format(skippedRecipes))
+print("\nSkipped {}\n".format(skippedRecipes))

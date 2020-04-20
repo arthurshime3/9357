@@ -41,4 +41,4 @@ class Meal(me.Document):
     dishTypes = me.ListField(me.StringField())
     ingredients = me.ListField(me.EmbeddedDocumentField(Ingredient))
     nutrients = me.ListField(me.EmbeddedDocumentField(Nutrient))
-
+    recipe = me.ListField(me.StringField())
