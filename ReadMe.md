@@ -5,7 +5,7 @@ In collaboration with Grady Memorial Hospital in Atlanta, Georgia
 
 ## Overview
 Welcome to the Installation Guide for the Food As Medicine Initiative Meal Planning Application, which was created by a 
-collaboration between Grady Memorial Hospital and Georgia Tech Computer Science Spring 2020 Junior Design Team 9357. This guide will show the software's release information and installation procedure. 
+collaboration between Grady Memorial Hospital and Georgia Tech Computer Science 2019-2020 Junior Design Team 9357. This guide will show the software's release information and installation procedure. 
 
 ## Release Update - April 20, 2020
 Version 1.0.1
@@ -16,9 +16,8 @@ Version 1.0.1
   * User can register a new account using email address
     * User can log in with their email address
     * User can log out of the system
-  * User can input person physiological data to create person, unique meal plans
-    * User's data is stored in a secure database 
-    * Database created with MongoDB
+  * User can input personal physiological data to create personal, unique meal plans
+    * User's data is stored in a secure database created with MongoDB
     * Spoonacular API has provided the system with meal data
   * Perfected an algorithm to create a curated meal plan based on user inputs
   * Created PDF export documents for meal plans and grocery list
@@ -30,14 +29,14 @@ Version 1.0.1
     * Updated formatting layouts of PDF documents
     * Fixed exporting issues 
   * Fixed PDF export for weekly meal plans
-    * Updated layout 
+    * Updated layout
     * Fixed exporting issues
   * Updated layout and picture placement of weekly meal planning page
   
 * Known Bugs and Defects
   * Low Priority Functionality (Reach Goals)
     * User's location and available food sources not implemented
-    * Data of user's cultural background not incorporatied into meal generator algorithm
+    * Data of user's cultural background not incorporated into meal generator algorithm
     * Application is not configurable for research studies
     * Application does not allow users to save meal plans as templates for future modification
 
@@ -112,7 +111,7 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
    ```
    10. Repeat steps 5 and 6
 
-   11. Web application should be up and running on their default web browser for user to interact with 
+   11. Web application should be up and running on default web browser
 
 #### Step 3: Application built and Run in Default brower
 
