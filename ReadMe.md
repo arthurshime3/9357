@@ -112,7 +112,7 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
 
    11. Web application should be up and running on default web browser
 
-#### Step 3: Application built and Run in Default brower
+#### Step 3: Application built and Run in Default browser
 
 Once Step 2 is complete and running, you should see something like the image below in your browser. 
 
