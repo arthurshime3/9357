@@ -132,6 +132,16 @@ You and any user can then interact with the application.
 
 ![Screen Shot 2020-04-18 at 7 02 42 PM](https://user-images.githubusercontent.com/46109868/79673414-82129980-81a7-11ea-8479-36583323bf01.png)
 
+#### Database Setup
+
+The application will not be able to generate a proper meal plan without having data for dietary restrictions and for individual meal plan options. To gain access to these, one must use the two utility scripts we have created to parse this information.
+
+To store the dietary restriction data, move to the backend/utils directory. From here, simply run
+   ```
+   python dietary_restriction_parser.py
+   ```
+This command will parse the "GT Nutrients" sheet into dietary restriction information, and upload it to the proper database for use in choosing dietary restrictions that apply to the user.
+
 ### Troubleshooting
 
 The process for installing and running this application is fairly simple, so we do not anticipate errors to arise. However, here are some common problems that may occur, and easy-to-use solutions.
