@@ -120,12 +120,16 @@ You and any user can then interact with the application.
 
 ### Troubleshooting
 
-The process for installing and running this application is fairly simple, so we do not anticipate errors to arise. However, here are some common problems that may occur.
+The process for installing and running this application is fairly simple, so we do not anticipate errors to arise. However, here are some common problems that may occur, and easy-to-use solutions.
 
 #### Unable to download repository
 
 If you do not have git installed on your machine, try downloading the repository as a .zip file instead of cloning it. Unzipping it into a directory will allow you to go into the proper subdirectories and run the commands that cause the app to run in your browser.
 
-#### Unable to download repository
+#### App not appearing in browser
 
-If you do not have git installed on your machine, try downloading the repository as a .zip file instead of cloning it. Unzipping it into a directory will allow you to go into the proper subdirectories and run the commands that cause the app to run in your browser.
+If running the frontend and backend does not open up the app in your browser, open the browser and go to the URL localhost:3000. The app's home page should be brought up upon visiting this URL.
+
+#### Unable to run npm commands
+
+If you are unable to use "npm run dev", ensure that some version of npm is installed on your machine with "npm -v". If no version has been installed, retry installing it (possibly with the "npm install -g" command) and then continue with other npm commands. Otherwise, we expect no difficulties with installing npm properly and advise that you ensure that no typing errors were made in moving to the correct directory and running the commands.
