@@ -10,7 +10,7 @@ GENDERS = ['Male', 'Female']
 
 class MealPlanApi(Resource):
 
-    # @jwt_required
+    @jwt_required
     @use_args({'wt': fields.Int(required=True, load_only='weight', validate=lambda val: val > 0),
                'ht': fields.Int(required=True, load_only='height', validate=lambda val: val > 0),
                'bud': fields.Float(required=True, load_only='budget', validate=lambda val: val > 0),
