@@ -17,7 +17,7 @@ app.config['MONGODB_SETTINGS'] = {
 
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
 app.config['JWT_COOKIE_CSRF_PROTECT'] = False # shouldn't use this in production
-app.config['JWT_SECRET_KEY'] = 'super-secret'  # Change this!
+app.config['JWT_SECRET_KEY'] = 'ECB13532453C19A1783AF9A4033CB6839323258F953D56EE6EAB6697F7332543'
 
 
 db = MongoEngine(app)
