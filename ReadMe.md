@@ -17,9 +17,10 @@ Version 1.0.1
     * User can log in with their email address
     * User can log out of the system
   * User can input personal physiological data to create personal, unique meal plans
-    * User's data is stored in a secure database created with MongoDB
-    * Spoonacular API has provided the system with meal data
-  * Perfected an algorithm to create a curated meal plan based on user inputs
+    * User's data is never stored
+    * Meals from the Spoonacular API are cached in the database and used to generate meal plans
+      * Future use would require further permissions from Spoonacular
+  * Improved linear optimization model used to create a curated meal plan based on user inputs
   * Created PDF export documents for meal plans and grocery list
     * Added checkboxes for user after each ingredient in grocery list
     * Exporting PDFs is now implemented and working
@@ -44,9 +45,16 @@ Version 1.0.1
 Follow the instructions below to install and run the Food As Medicine Initiative Meal Planner
 
 ### Pre-Requisites
-Before installation, the following must be on your computer:
-* One of the following Operating Systems on computer: Windows 9 or newer or MacOS 10 or newer
+* One of the following Operating Systems on computer: Windows 8 or newer or MacOS 10 or newer
 * Stable internet connection through WiFi or Ethernet
+Before installation, the following must be on your computer:
+* Python 3
+* pip
+* Node.js
+* npm
+Database Requirements:
+* MongoDB
+  * Either a locally installed instance or a hosted instance
 
 
 ### Third Party Software Requirements
@@ -78,7 +86,7 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
    Alternatively, the files can be saved in a preferred location by simply downloading the repository as a .zip file,
    without the need to use git commands.
    
-   2. Next, cd into the 9357 directory. A directory is also known as a folder. This can be found by entering `ls` to see your current directory and `cd FILE-NAME` to enter into that directory. 
+   2. Next, cd into the 9357 directory. A directory is also known as a folder. This can be found by entering `ls` to see your current directory and `cd DIRECTORY-NAME` to enter into that directory. 
 
    3. The directory is named `9357`. Once located, then enter into that directory by inputting `cd 9357`
 
@@ -106,9 +114,15 @@ If probems occur, contact Customer Support at gregvarghese@gatech.edu
    ```
    cd backend
    ```
-   10. Repeat steps 5 and 6
-
-   11. Web application should be up and running on default web browser
+   10. Enter the following to download external dependencies:
+   ```
+   pip install -r "requirements.txt"
+   ```
+   11. Then nter the following in the next line:
+   ```
+   python app.py
+   ```
+   12.  Web application should be up and running on default web browser
 
 #### Step 3: Application built and Run in Default browser
 
