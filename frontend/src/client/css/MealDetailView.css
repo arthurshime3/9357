@@ -1,0 +1,49 @@
+.MealDetailView {
+    z-index: 1;
+    position: absolute;
+    width: 40%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -2em;
+    margin-bottom: 2em;
+
+    padding: 5px;
+    background-color: #ffffff;
+    border: 1px solid rgb(226, 226, 226);
+}
+
+.MealDetailView img {
+    width: 80%;
+}
+
+.NutritionLabel table {
+    text-align: left;
+    margin: auto;
+}
+
+#servings {
+    margin-bottom: 0em;
+}
+
+.closeButton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2;
+}
+
+#sourceURL {
+    margin-top: 1em;
+}
+
+.DVlabel {
+    text-align: right;
+}
+
+#disclaimer {
+    width: 300px;
+    font-size: x-small;
+    margin: auto;
+}

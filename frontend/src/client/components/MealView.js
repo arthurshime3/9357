@@ -1,28 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { format, startOfToday, startOfWeek, addDays } from 'date-fns';
+
+import MealDetailView from './MealDetailView';
+
 import '../css/MealView.css';
 
-const processMealData = data => {
+const processMealData = (data) => {
     const nutrients = data.nutrients;
     const transformedNutrients = {};
-    nutrients.forEach(nutrient => {
+    // console.log(nutrients);
+    for (const [name, nutrient] of Object.entries(nutrients)) {
         transformedNutrients[nutrient.title.toLowerCase()] = {
             amount: nutrient.amount,
             unit: nutrient.unit,
         };
-    });
+    }
 
-    return {
-        title: data.title,
-        image: data.image,
+    const out = {
+        ...data,
         ...transformedNutrients,
     };
+    delete out.nutrients;
+    return out;
 };
 
-const MealView = props => {
-    const makeMealBoxData = (data, mealName) => {
+const MealView = (props) => {
+    const [mealdetail, setmealdetail] = useState(null);
+    useEffect(() => {
+        console.log(mealdetail);
+    });
+    const makeMealBoxData = (data, mealName, day) => {
         return (
-            <>
+            <div
+                onClick={() => {
+                    setmealdetail(`${data._id}|${mealName}|${day}`);
+                }}>
                 <div className="WhichMeal">{mealName}</div>
                 <div className="MealTitle">
                     <p>{data.title}</p>
@@ -30,8 +42,8 @@ const MealView = props => {
 
                 <img src={data.image} />
                 <div className="MealFacts">
-                    <p>{data.calories.amount} calories</p>
-                    <p>
+                    <p>{data.calories.amount.toFixed(0)} cal</p>
+                    {/* <p>
                         Carbs: {data.carbohydrates.amount}
                         {data.carbohydrates.unit}
                     </p>
@@ -42,9 +54,19 @@ const MealView = props => {
                     <p>
                         Fat: {data.fat.amount}
                         {data.fat.unit}
-                    </p>
+                    </p> */}
                 </div>
-            </>
+            </div>
+        );
+    };
+    const showMealBox = (id) => {
+        const [name, meal, day] = id.split('|');
+        const mealData = props.data[day].filter((m) => m._id == name)[0];
+        return (
+            <MealDetailView
+                mealData={mealData}
+                back={() => setmealdetail(null)}
+            />
         );
     };
     const makeMealBox = (data, i) => {
@@ -58,9 +80,9 @@ const MealView = props => {
                         )}
                     </p>
                 </div>
-                {makeMealBoxData(data[0], 'Breakfast')}
-                {makeMealBoxData(data[1], 'Lunch')}
-                {makeMealBoxData(data[2], 'Dinner')}
+                {makeMealBoxData(data[0], 'Breakfast', i)}
+                {makeMealBoxData(data[1], 'Lunch', i)}
+                {makeMealBoxData(data[2], 'Dinner', i)}
             </div>
         );
     };
@@ -71,7 +93,12 @@ const MealView = props => {
         mealBoxes.push(makeMealBox(singleDayOfMeals.map(processMealData), idx));
     });
 
-    return <div className="MealView">{mealBoxes}</div>;
+    return (
+        <div className="MealView">
+            {mealBoxes}
+            {mealdetail && showMealBox(mealdetail)}
+        </div>
+    );
 };
 
 export default MealView;

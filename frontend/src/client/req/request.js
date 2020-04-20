@@ -25,7 +25,7 @@ export const login = (data, succ, fail) => {
 
 export const logout = fn => {
     axios
-        .post('/api/logout', { withCredentials: true })
+        .get('/api/logout', { withCredentials: true })
         .then(res => {
             console.log(res);
             fn(res);
@@ -65,6 +65,22 @@ export const getProfile = fn => {
 export const getDietaryRestrictions = fn => {
     axios
         .get('/api/dietaryRestrictions')
+        .then(res => {
+            if (res.status == 200) {
+                console.log(res.data);
+                fn(res.data);
+            } else {
+                console.log(res);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+export const getGroceryList = (data, fn) => {
+    axios
+        .post('/api/grocery', data)
         .then(res => {
             if (res.status == 200) {
                 console.log(res.data);

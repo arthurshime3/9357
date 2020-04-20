@@ -26,7 +26,7 @@ const Header = () => {
         <div className="header">
             <Link to="/">
                 <div className="logobox valign">
-                    <img src={GradyLogo} className="logoimg" />
+                    {/* <img src={GradyLogo} className="logoimg" /> */}
                     Food as Medicine Initiative
                 </div>
             </Link>

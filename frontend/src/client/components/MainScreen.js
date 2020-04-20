@@ -9,6 +9,7 @@ import '../css/MainScreen.css';
 const MainScreen = () => {
     const sessionContext = useContext(SessionContext);
     const sessionData = sessionContext[0];
+    console.log(sessionData);
 
     return (
         <>
