@@ -141,7 +141,7 @@ You and any user can then interact with the application.
 
 #### Database Setup
 
-The application will not be able to generate a proper meal plan without having data for dietary restrictions and for individual meal plan options. To gain access to these, one must use the two utility scripts we have created to parse this information.
+The application will not be able to generate a proper meal plan without having data for dietary restrictions and for individual meal plan options. To gain access to these, one must use the two utility scripts we have created to parse this information. In both scripts, ensure that you replace our database information (at the end of the scripts, in the me.connect() commands) with the information for the database instance you are using.
 
 To add meals from the Spoonacular API, open the backend/utils/get_data.py file. Change the range of meal id's you would like to call from Spoonacular on line 119. Then, move to the backend/utils directory. Run
    ```
