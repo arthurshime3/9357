@@ -4,7 +4,7 @@ import { NutritionLabel } from 'react-fda-nutrition-facts';
 
 import '../css/MealDetailView.css';
 
-const RecipeView = (props) => {
+export const RecipeView = (props) => {
     const recipe = props.meal.recipe;
     const readyIn = props.meal.readyInMinutes;
     console.log(`readyIn: ${readyIn}`);
@@ -23,7 +23,7 @@ const RecipeView = (props) => {
     );
 };
 
-const IngredientsView = (props) => {
+export const IngredientsView = (props) => {
     const ingredients = props.meal.ingredients;
     if (ingredients == null || ingredients.length == 0) {
         return <p>No ingredients found!</p>;
@@ -40,7 +40,7 @@ const IngredientsView = (props) => {
     );
 };
 
-const NutritionFactsView = (props) => {
+export const NutritionFactsView = (props) => {
     const nutrients = props.meal.nutrients;
     if (nutrients == null || Object.keys(nutrients).length == 0) {
         return <p>Nutrition facts missing!</p>;
@@ -93,7 +93,7 @@ const MealView = (props) => {
 
             <h2>{meal.title}</h2>
             <img src={meal.image} id="meal_img" />
-            
+
             <h3>Ingredients</h3>
             <IngredientsView meal={meal} />
             <h3>Recipe</h3>

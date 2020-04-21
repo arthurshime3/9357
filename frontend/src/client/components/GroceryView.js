@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/GroceryView.css';
 
-const processGroceryData = (data) => {
+export const processGroceryData = (data) => {
     const out = [];
 
     for (const name in data) {

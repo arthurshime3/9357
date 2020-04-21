@@ -5,7 +5,7 @@ from services.dietary_restriction_service import get_dietary_restrictions
 
 class DietaryRestrictionApi(Resource):
 
-    # @jwt_required
+    @jwt_required
     def get(self):
         diets = get_dietary_restrictions()
         return diets, 200

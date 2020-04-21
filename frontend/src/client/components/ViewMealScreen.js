@@ -5,9 +5,12 @@ import MealView from './MealView';
 import MealOne from '../testdata/MealOne';
 
 import '../css/ViewMealScreen.css';
+import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
+import { MealPlanPDF } from '../pdf/MealPlan';
 
 const ViewMealScreen = (props) => {
     const opts = props?.location?.state?.opts;
+    console.log(opts);
     const mealContext = useContext(MealDataContext);
     let mealData = mealContext[0].data;
     if (mealData == null || Object.entries(mealData).length === 0) {
@@ -36,6 +39,13 @@ const ViewMealScreen = (props) => {
             <Link to="/create" state={{ opts: opts }}>
                 Change Inputs
             </Link>
+            <PDFDownloadLink
+                document={<MealPlanPDF data={mealData} />}
+                fileName="mealplan.pdf">
+                {({ blob, url, loading, error }) =>
+                    loading ? 'Loading document...' : 'Download Pdf'
+                }
+            </PDFDownloadLink>
             {/* <p>Data received was:</p> */}
             {/* <p>{JSON.stringify(mealData)}</p> */}
             <MealView data={mealData}></MealView>

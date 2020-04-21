@@ -6,7 +6,7 @@ from models.meal import Meal
 
 
 class GroceryApi(Resource):
-    # @jwt_required
+    @jwt_required
     @use_args({'meals': fields.List(fields.Int())})
     def post(self, args):
         meals = Meal.objects().only('ingredients').in_bulk(args.get('meals'))

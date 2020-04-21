@@ -25,7 +25,7 @@ export const login = (data, succ, fail) => {
 
 export const logout = fn => {
     axios
-        .post('/api/logout', { withCredentials: true })
+        .get('/api/logout', { withCredentials: true })
         .then(res => {
             console.log(res);
             fn(res);
