@@ -48,10 +48,10 @@ Follow the instructions below to install and run the Food As Medicine Initiative
 * One of the following Operating Systems on computer: Windows 8 or newer or MacOS 10 or newer
 * Stable internet connection through WiFi or Ethernet
 Before installation, the following must be on your computer:
-* Python 3
-* pip
-* Node.js
-* npm
+* Python 3 (downloadable at https://www.python.org/downloads/)
+* pip (comes with Python download)
+* Node.js (downloadable at https://nodejs.org/en/download/)
+* npm (comes with Node.js)
 
 Database Requirements:
 * MongoDB
