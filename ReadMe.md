@@ -47,6 +47,7 @@ Follow the instructions below to install and run the Food As Medicine Initiative
 ### Pre-Requisites
 * One of the following Operating Systems on computer: Windows 8 or newer or MacOS 10 or newer
 * Stable internet connection through WiFi or Ethernet
+
 Before installation, the following must be on your computer:
 * Python 3 (downloadable at https://www.python.org/downloads/)
 * pip (comes with Python download)
